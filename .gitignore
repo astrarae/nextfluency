@@ -1,0 +1,43 @@
+# ===== Node / Frontend =====
+node_modules/
+dist/
+build/
+.cache/
+.next/
+out/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-store/
+
+# ===== Python / Backend =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+db.sqlite3
+.env
+venv/
+.env.local
+.env.development
+.env.production
+
+# ===== Django specific =====
+*.log
+staticfiles/
+media/
+local_settings.py
+
+# ===== IDEs / Editors =====
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ===== OS Junk =====
+.DS_Store
+Thumbs.db

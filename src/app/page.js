@@ -41,20 +41,19 @@ export default function Home() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
           style={{
-            height: "100%"
+            height: "100%",
           }}
         >
+          <Navbar
+            currentCountry={currentCountry}
+            onClickHandle={onClickHandle}
+          />
           <Box
             display="block"
             w={{ base: "100vw", md: "500px", lg: "600px" }}
             minH="100vh"
             p={4}
           >
-            <Navbar
-              currentCountry={currentCountry}
-              onClickHandle={onClickHandle}
-              mb={6}
-            />
             <TabsSection
               mb={0}
               activeTab={activeTab}

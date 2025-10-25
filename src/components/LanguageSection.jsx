@@ -27,8 +27,15 @@ const LanguageSection = ({ currentCountry }) => {
         economyTotalSum={currentCountry == 1 ? "360 000" : "70 000"}
       />
       <CourseDescription
-        // title={cards[activeImg].title}
-        description={cards[activeImg].description}
+        title={cards[activeImg].title1}
+        description={cards[activeImg].description1}
+        marginLeft={1}
+        mt={2}
+      />
+
+      <CourseDescription
+        title={cards[activeImg].title2}
+        description={cards[activeImg].description2}
         marginLeft={1}
         mt={2}
       />
