@@ -18,7 +18,7 @@ const Navbar = ({ onClickHandle, currentCountry, ...otherProps }) => {
       position="sticky"
       top={0}
       left={0}
-      zIndex={10}
+      zIndex={9999}
       bg="rgba(255, 255, 255, 0.3)" // semi-transparent white
       backdropFilter="blur(7px)" 
     >
