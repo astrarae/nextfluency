@@ -1,0 +1,15 @@
+.sale-mark{
+    color: black;
+    width: 150px;
+    height: 23px;
+    color: #726D6D;
+    font-size: 20px;
+}
+
+.angled-line{
+    /* width: 133px; */
+    border: 1.2px solid red;
+    position: relative;
+    bottom: 15px;
+    transform: rotate(0deg);
+}
