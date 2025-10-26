@@ -35,6 +35,7 @@ export default function Home() {
       flexDirection="column"
       bgColor="white"
     >
+      <Navbar currentCountry={currentCountry} onClickHandle={onClickHandle} />
       <AnimatePresence mode="wait">
         <motion.div
           initial={{ opacity: 0, x: -700 }}
@@ -44,15 +45,12 @@ export default function Home() {
             height: "100%",
           }}
         >
-          <Navbar
-            currentCountry={currentCountry}
-            onClickHandle={onClickHandle}
-          />
           <Box
             display="block"
             w={{ base: "100vw", md: "500px", lg: "600px" }}
             minH="100vh"
             p={4}
+            mt={4}
           >
             <TabsSection
               mb={0}
