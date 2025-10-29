@@ -2,6 +2,7 @@ import { Box, Text, Image } from "@chakra-ui/react";
 import CountryChoice from "./CountryChoice";
 import { Menu } from "lucide-react";
 import NavDrawer from "./Drawer";
+
 const Navbar = ({ onClickHandle, currentCountry, ...otherProps }) => {
   return (
     <Box

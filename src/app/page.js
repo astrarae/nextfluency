@@ -1,17 +1,19 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import LanguageSection from "../components/LanguageSection";
 import TabsSection from "../components/TabsSection";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItSection from "../components/ItSection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Box } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState(1);
   const [currentCountry, setCurrentCountry] = useState(1);
-
+  const savedCountry = localStorage.getItem("selectedCountry")
   const languageHandler = () => {
     setActiveTab(() => 1);
   };
@@ -22,7 +24,14 @@ export default function Home() {
 
   const onClickHandle = (value) => {
     setCurrentCountry(value);
+    localStorage.setItem("selectedCountry", value)
   };
+
+  useEffect(() => {
+    if (savedCountry) {
+      setCurrentCountry(Number(savedCountry))
+    }
+  }, [savedCountry])
 
   return (
     <Box
