@@ -18,7 +18,7 @@ const LanguageSection = ({ currentCountry }) => {
   return (
     <Box id="main" w="auto" h="auto" bgColor="white">
       <InteractiveSection
-        title={cards[activeImg].title}
+        title={cards[activeImg].name}
         firstSlideImageSrc={cards[0].imgSrc}
         secondSlideImageSrc={cards[1].imgSrc}
         marginBottom={4}

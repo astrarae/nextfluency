@@ -24,7 +24,8 @@ const navDrawer = ({ children }) => {
         <Drawer.Positioner>
           <Drawer.Content bgColor="white" color="black" w="68vw">
             <Drawer.Header
-              boxShadow="0px 4px 6px -1px rgba(91, 10, 121, 0.31)"
+              // boxShadow="0px 4px 6px -1px gray"
+              borderBottom="1px solid black"
               display="flex"
               flexDir="row"
               alignItems="center"

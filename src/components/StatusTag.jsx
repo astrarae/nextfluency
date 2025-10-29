@@ -14,7 +14,7 @@ export default function StatusTag({title}) {
       pl={4}
       pr={4}
     >
-      <Text mt={1} color="white" fontSize="0.7rem" fontWeight={500}>{title}</Text>
+      <Text mt={0.5} color="white" fontSize="0.7rem" fontWeight={500}>{title}</Text>
     </Box>
   );
 }

@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 export default function WebBanner({ handleClick }) {
   return (
     <Box
-      h="265px"
+      h="fit"
       w="full"
       rounded="lg"
       boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
@@ -13,7 +13,13 @@ export default function WebBanner({ handleClick }) {
       justifyContent="flex-start"
       p={2}
     >
-      <Box display="flex" justifyContent="space-between">
+      <Box h="5px" display="flex" justifyContent="flex-end">
+
+      <Button w="2px" h="30px" variant="plain" onClick={handleClick}>
+          <X color="black" />
+        </Button>
+      </Box>
+      <Box display="flex" justifyContent="space-between" >
         <Image
           src="https://i.pinimg.com/736x/3c/7f/60/3c7f601cc5508c3f54b3f819e86cad69.jpg"
           color="white"
@@ -22,9 +28,6 @@ export default function WebBanner({ handleClick }) {
           rounded="lg"
           objectFit="fit"
         />
-        <Button w="2px" h="30px" variant="plain" onClick={handleClick}>
-          <X color="black" />
-        </Button>
       </Box>
       <Box
         p={1}
