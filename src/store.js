@@ -10,3 +10,8 @@ export const useTabStore = create((set) => ({
     activeTab: 1,
     setActiveTab: (tab) => set({activeTab: tab})
 }))
+
+export const useCountryReminder = create((set) => ({
+    confirmed: false,
+    setConfirmed: (confirmation) => set({confirmed: confirmation})
+}))

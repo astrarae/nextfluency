@@ -5,11 +5,15 @@ import TabsSection from "../components/TabsSection";
 import ItSection from "../components/ItSection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useTabStore } from "@/store";
+import { useTabStore, useCountryReminder } from "@/store";
 import { Box } from "@chakra-ui/react";
+import ChangeReminder from "@/components/ChangeReminder";
+import { AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const { activeTab } = useTabStore();
+  const { confirmed } = useCountryReminder();
+
   return (
     <Box
       w="100vw"
@@ -29,6 +33,7 @@ export default function Home() {
           p={4}
           mt={4}
         >
+          <AnimatePresence>{!confirmed && <ChangeReminder />}</AnimatePresence>
           <TabsSection />
 
           {activeTab == 1 ? <LanguageSection /> : <ItSection />}
