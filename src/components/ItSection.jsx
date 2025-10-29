@@ -4,17 +4,19 @@ import { useState } from "react";
 import PriceBox from "./PriceBox";
 import CourseDescription from "./CourseDescription";
 import cards from "../it-courses-info";
+import { useCountryStore } from "@/store";
+const ItSection = () => {
 
-const ItSection = ({ currentCountry }) => {
   const [activeImg, setActiveImg] = useState(0);
-
+  const { currentCountry } = useCountryStore();
+  
   const handleClick = () => {
     const section = document.getElementById("info2");
     if (section) {
-      section.scrollIntoView({behavior: "smooth"})
+      section.scrollIntoView({ behavior: "smooth" });
     }
-  }
-  
+  };
+
   return (
     <Box id="main" w="auto" h="auto" bgColor="white">
       <InteractiveSection

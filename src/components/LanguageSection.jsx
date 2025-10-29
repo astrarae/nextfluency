@@ -4,19 +4,21 @@ import { useState } from "react";
 import PriceBox from "./PriceBox";
 import CourseDescription from "./CourseDescription";
 import cards from "../language-courses-info";
+import { useCountryStore } from "@/store";
 
-const LanguageSection = ({ currentCountry }) => {
+const LanguageSection = ({ ...otherProps }) => {
   const [activeImg, setActiveImg] = useState(0);
-
+  const { currentCountry } = useCountryStore();
+  
   const handleClick = () => {
     const section = document.getElementById("info1");
     if (section) {
-      section.scrollIntoView({behavior: "smooth"})
+      section.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
-    <Box id="main" w="auto" h="auto" bgColor="white">
+    <Box id="main" w="auto" h="auto" bgColor="white" {...otherProps}>
       <InteractiveSection
         title={cards[activeImg].name}
         firstSlideImageSrc={cards[0].imgSrc}

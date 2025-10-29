@@ -1,39 +1,15 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
+import MainPageAnimationWrapper from "../functions/MainPageAnimationWrapper";
 import LanguageSection from "../components/LanguageSection";
 import TabsSection from "../components/TabsSection";
-import { useState, useEffect } from "react";
 import ItSection from "../components/ItSection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useTabStore } from "@/store";
 import { Box } from "@chakra-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
-
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState(1);
-  const [currentCountry, setCurrentCountry] = useState(1);
-  
-  const languageHandler = () => {
-    setActiveTab(() => 1);
-  };
-
-  const itHandler = () => {
-    setActiveTab(() => 2);
-  };
-
-  const onClickHandle = (value) => {
-    setCurrentCountry(value);
-    localStorage.setItem("selectedCountry", value)
-  };
-
-  useEffect(() => {
-    const savedCountry = localStorage.getItem("selectedCountry")
-    if (savedCountry) {
-      setCurrentCountry(Number(savedCountry))
-    }
-  }, [])
-
+  const { activeTab } = useTabStore();
   return (
     <Box
       w="100vw"
@@ -45,38 +21,20 @@ export default function Home() {
       flexDirection="column"
       bgColor="white"
     >
-      <Navbar currentCountry={currentCountry} onClickHandle={onClickHandle} />
-      <AnimatePresence mode="wait">
-        <motion.div
-          initial={{ opacity: 0, x: -700 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          style={{
-            height: "100%",
-          }}
+      <Navbar />
+      <MainPageAnimationWrapper>
+        <Box
+          w={{ base: "100vw", md: "500px", lg: "600px" }}
+          minH="100vh"
+          p={4}
+          mt={4}
         >
-          <Box
-            display="block"
-            w={{ base: "100vw", md: "500px", lg: "600px" }}
-            minH="100vh"
-            p={4}
-            mt={4}
-          >
-            <TabsSection
-              mb={0}
-              activeTab={activeTab}
-              languageHandler={languageHandler}
-              itHandler={itHandler}
-            />
-            {activeTab == 1 ? (
-              <LanguageSection currentCountry={currentCountry} />
-            ) : (
-              <ItSection currentCountry={currentCountry} />
-            )}
-            <Footer />
-          </Box>
-        </motion.div>
-      </AnimatePresence>
+          <TabsSection />
+
+          {activeTab == 1 ? <LanguageSection /> : <ItSection />}
+        </Box>
+        <Footer />
+      </MainPageAnimationWrapper>
     </Box>
   );
 }

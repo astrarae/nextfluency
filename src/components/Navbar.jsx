@@ -1,9 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Text, Image } from "@chakra-ui/react";
 import CountryChoice from "./CountryChoice";
 import { Menu } from "lucide-react";
 import NavDrawer from "./Drawer";
+import { useCountryStore } from "@/store";
+import { useEffect } from "react";
 
-const Navbar = ({ onClickHandle, currentCountry, ...otherProps }) => {
+const Navbar = ({ ...otherProps }) => {
+  const { currentCountry, setCurrentCountry } = useCountryStore();
+  const onClickHandle = (value) => {
+    setCurrentCountry(value);
+    localStorage.setItem("selectedCountry", value);
+  };
+  useEffect(() => {
+    const savedCountry = localStorage.getItem("selectedCountry");
+    if (savedCountry) {
+      setCurrentCountry(Number(savedCountry));
+    }
+  }, []);
   return (
     <Box
       {...otherProps}
@@ -21,7 +35,7 @@ const Navbar = ({ onClickHandle, currentCountry, ...otherProps }) => {
       left={0}
       zIndex={10}
       bg="rgba(255, 255, 255, 0.3)" // semi-transparent white
-      backdropFilter="blur(7px)" 
+      backdropFilter="blur(7px)"
     >
       <Box display="flex" flexDir="row" alignItems="center" p={1} gap={2}>
         <NavDrawer>
@@ -41,7 +55,7 @@ const Navbar = ({ onClickHandle, currentCountry, ...otherProps }) => {
         </Text>
       </Box>
 
-      <Box  display="flex" flexDir="row" alignItems="center" gap={2}>
+      <Box display="flex" flexDir="row" alignItems="center" gap={2}>
         <Text color="black" fontWeight={700} fontSize="15px">
           Ваша страна:{" "}
         </Text>

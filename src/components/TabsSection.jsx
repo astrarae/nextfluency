@@ -1,11 +1,8 @@
 import { Box, Button } from "@chakra-ui/react";
+import { useTabStore } from "@/store";
 
-const TabsSection = ({
-  activeTab,
-  languageHandler,
-  itHandler,
-  ...otherProps
-}) => {
+const TabsSection = ({ ...otherProps }) => {
+  const { activeTab, setActiveTab } = useTabStore();
   return (
     <Box display="flex" w="full" {...otherProps}>
       <Button
@@ -14,7 +11,7 @@ const TabsSection = ({
         color={activeTab == 1 ? "white" : "black"}
         bgColor={activeTab == 1 ? "black" : "transparent"}
         borderBottom="1px solid grey"
-        onClick={languageHandler}
+        onClick={() => setActiveTab(1)}
       >
         Языковые курсы
       </Button>
@@ -25,7 +22,7 @@ const TabsSection = ({
         color={activeTab == 2 ? "white" : "black"}
         bgColor={activeTab == 2 ? "black" : "transparent"}
         borderBottom="1px solid grey"
-        onClick={itHandler}
+        onClick={() => setActiveTab(2)}
       >
         IT курсы
       </Button>
