@@ -72,7 +72,7 @@ const InteractiveSection = ({
           overflow="hidden"
           bgColor="black"
         >
-          Записаться на беслатный урок
+          Записаться на бесплатный урок
         </Button>
       </Link>
 
