@@ -11,6 +11,7 @@ const InteractiveSection = ({
   firstSlideImageSrc,
   secondSlideImageSrc,
   onSlideChange,
+  handleClick,
   ...otherProps
 }) => {
   return (
@@ -35,6 +36,20 @@ const InteractiveSection = ({
 
       <h1>{title}</h1>
 
+      <Button
+        w="full"
+        border="1px solid black"
+        variant="plain"
+        mt={4}
+        rounded="md"
+        position="relative"
+        overflow="hidden"
+        color="black"
+        onClick={handleClick}
+      >
+        Подробнее
+      </Button>
+
       <Link href="/contacts">
         <Button // The button that leads to contacts
           w="full"
@@ -45,7 +60,7 @@ const InteractiveSection = ({
           position="relative"
           overflow="hidden"
         >
-          Записаться на курс
+          Взять беслатный урок
         </Button>
       </Link>
     </Box>

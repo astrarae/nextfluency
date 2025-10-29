@@ -8,6 +8,13 @@ import cards from "../language-courses-info";
 const LanguageSection = ({ currentCountry }) => {
   const [activeImg, setActiveImg] = useState(0);
 
+  const handleClick = () => {
+    const section = document.getElementById("info1");
+    if (section) {
+      section.scrollIntoView({behavior: "smooth"})
+    }
+  }
+
   return (
     <Box id="main" w="auto" h="auto" bgColor="white">
       <InteractiveSection
@@ -16,6 +23,7 @@ const LanguageSection = ({ currentCountry }) => {
         secondSlideImageSrc={cards[1].imgSrc}
         marginBottom={4}
         onSlideChange={(e) => setActiveImg(e)}
+        handleClick={handleClick}
       />
       <PriceBox
         monthlyFullPayment={currentCountry == 1 ? "1 560 000" : "300 000"}
@@ -27,6 +35,7 @@ const LanguageSection = ({ currentCountry }) => {
         economyTotalSum={currentCountry == 1 ? "360 000" : "70 000"}
       />
       <CourseDescription
+        id="info1"
         title={cards[activeImg].title1}
         description={cards[activeImg].description1}
         marginLeft={1}
