@@ -13,7 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Home() {
   const [activeTab, setActiveTab] = useState(1);
   const [currentCountry, setCurrentCountry] = useState(1);
-  const savedCountry = localStorage.getItem("selectedCountry")
+  
   const languageHandler = () => {
     setActiveTab(() => 1);
   };
@@ -28,10 +28,11 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const savedCountry = localStorage.getItem("selectedCountry")
     if (savedCountry) {
       setCurrentCountry(Number(savedCountry))
     }
-  }, [savedCountry])
+  }, [])
 
   return (
     <Box
