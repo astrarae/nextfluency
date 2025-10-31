@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Button, Image, Drawer, Portal, Box } from "@chakra-ui/react";
 import DrawerComponent from "./DrawerComponent";
-import { BookOpen, PhoneForwarded } from "lucide-react";
+import { BookOpen, PhoneForwarded, House } from "lucide-react";
 import Link from "next/link";
 import WebBanner from "./WebBanner";
 import { useState } from "react";
@@ -53,12 +53,18 @@ const navDrawer = ({ children }) => {
               gap={3}
               flexDir="column"
             >
-              <Link href="/resources">
+              <Link href="/">
+                <DrawerComponent
+                  title="Главная страница"
+                  icon={<House color="black" />}
+                />
+              </Link>
+              {/* <Link href="/resources">
                 <DrawerComponent
                   title="Ресурсы"
                   icon={<BookOpen color="black" />}
                 />
-              </Link>
+              </Link> */}
               <Link href="/contacts">
                 <DrawerComponent
                   title="Контакты"

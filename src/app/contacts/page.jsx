@@ -1,3 +1,4 @@
+"use client"
 import { Box } from "@chakra-ui/react";
 import ProfileCard from "../../components/ProfileCard";
 import Footer from "../../components/Footer";
@@ -5,11 +6,11 @@ import CertificateCard from "../../components/CertificateCard";
 import ContactCard from "../../components/ContactCard";
 import BankCard from "../../components/BankCard";
 import AnimatedWrapper from "./AnimatedWrapper";
-
-export const metadata = {
-  // works because you have static routes
-  title: "Contacts - OneFluency",
-};
+import Navbar from "@/components/Navbar";
+// export const metadata = {
+//   // works because you have static routes
+//   title: "Contacts - OneFluency",
+// };
 
 const ContactsScreen = ({ params }) => {
   return (
@@ -23,6 +24,7 @@ const ContactsScreen = ({ params }) => {
       flexDirection="column"
       bgColor="white"
     >
+      <Navbar />
       <AnimatedWrapper>
         <Box
           display="flex"
@@ -33,6 +35,7 @@ const ContactsScreen = ({ params }) => {
           minH="100vh"
           overflowX="hidden"
           p={4}
+          mt={6}
         >
           <ProfileCard
             avatarImage="avatarr.jpg"

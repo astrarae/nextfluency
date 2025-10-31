@@ -26,6 +26,7 @@ const InteractiveSection = ({
   return (
     <Box {...otherProps}>
       <Swiper // The main card swiper
+        loop={true}
         pagination={{
           dynamicBullets: true,
           clickable: true,
@@ -76,7 +77,7 @@ const InteractiveSection = ({
         </Button>
       </Link>
 
-      <Button
+      {/* <Button
         w="full"
         border="1px solid black"
         variant="plain"
@@ -88,7 +89,7 @@ const InteractiveSection = ({
         onClick={handleClick}
       >
         Подробнее
-      </Button>
+      </Button> */}
     </Box>
   );
 };
