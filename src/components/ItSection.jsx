@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import InteractiveSection from "./InteractiveSection";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PriceBox from "./PriceBox";
 import CourseDescription from "./CourseDescription";
 import cards from "../it-courses-info";
@@ -10,8 +10,9 @@ const ItSection = () => {
   const [activeImg, setActiveImg] = useState(0);
   const { currentCountry } = useCountryStore();
   
+  const sectionRef2 = useRef(null);
   const handleClick = () => {
-    const section = document.getElementById("info2");
+    const section = sectionRef2.current;
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
@@ -37,7 +38,7 @@ const ItSection = () => {
         economyTotalSum={currentCountry == 1 ? "400 000" : "50 000"}
       />
       <CourseDescription
-        id="info2"
+        ref={sectionRef2}
         title={cards[activeImg].title1}
         description={cards[activeImg].description1}
         marginLeft={1}
