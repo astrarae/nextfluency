@@ -9,6 +9,7 @@ import { useTabStore, useCountryReminder } from "@/store";
 import { Box } from "@chakra-ui/react";
 import ChangeReminder from "@/components/ChangeReminder";
 import { AnimatePresence } from "framer-motion";
+import './page.css'
 
 export default function Home() {
   const { activeTab } = useTabStore();
