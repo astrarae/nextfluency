@@ -1,7 +1,7 @@
 import { Alert, CloseButton } from "@chakra-ui/react";
 import { useCountryReminder } from "@/store";
 import { motion } from "framer-motion";
-export default function ChangeReminder({ onClickHandle, ...otherProps }) {
+export default function ChangeReminder({ title,status,onClickHandle, ...otherProps }) {
   const { setConfirmed } = useCountryReminder();
   return (
     <motion.div
@@ -10,8 +10,7 @@ export default function ChangeReminder({ onClickHandle, ...otherProps }) {
     >
       <Alert.Root
         {...otherProps}
-        status="info"
-        title="This is the alert title"
+        status={status}
         h="fit"
         display="flex"
         alignItems="center"
@@ -26,7 +25,7 @@ export default function ChangeReminder({ onClickHandle, ...otherProps }) {
       >
         <Alert.Indicator color="black" ml={2}/>
         <Alert.Content>
-          <Alert.Description fontWeight={500}>Не забудьте выбрать страну, чтобы увидеть актуальную информацию</Alert.Description>
+          <Alert.Description fontWeight={500}>{title}</Alert.Description>
         </Alert.Content>
         <CloseButton
           onClick={() => setConfirmed(true)}

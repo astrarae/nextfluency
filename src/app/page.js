@@ -32,7 +32,7 @@ export default function Home() {
           p={4}
           mt={4}
         >
-          <AnimatePresence>{!confirmed && <ChangeReminder />}</AnimatePresence>
+          <AnimatePresence>{!confirmed && <ChangeReminder title="Не забудьте выбрать страну, чтобы увидеть актуальную информацию" status="info"/>}</AnimatePresence>
 
           <MainSection />
         </Box>
