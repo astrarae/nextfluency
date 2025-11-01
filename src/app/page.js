@@ -1,8 +1,6 @@
 "use client";
 import MainPageAnimationWrapper from "../functions/MainPageAnimationWrapper";
 import MainSection from "../components/MainSection";
-import TabsSection from "../components/TabsSection";
-import ItSection from "../components/ItSection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useTabStore, useCountryReminder } from "@/store";

@@ -20,3 +20,8 @@ export const useActiveImageIndex = create((set) => ({
     activeImg: 0,
     setActiveImg: (index) => set({activeImg: index})
 }))
+
+export const useCurrentPage = create((set) => ({
+    currentPage: "home",
+    setCurrentPage: (page) => set({currentPage: page})
+}))

@@ -7,12 +7,20 @@ import ContactCard from "../../components/ContactCard";
 import BankCard from "../../components/BankCard";
 import AnimatedWrapper from "./AnimatedWrapper";
 import Navbar from "@/components/Navbar";
+import { useEffect } from "react";
+import { useCurrentPage } from "@/store";
 // export const metadata = {
 //   // works because you have static routes
 //   title: "Contacts - OneFluency",
 // };
 
 const ContactsScreen = ({ params }) => {
+  const { currentPage,setCurrentPage } = useCurrentPage();
+  
+    useEffect(() => {
+      setCurrentPage("contacts")
+    }, [currentPage])
+
   return (
     <Box
       w="100vw"

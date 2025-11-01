@@ -1,69 +1,70 @@
 import { Box } from "@chakra-ui/react";
 import InteractiveSection from "./InteractiveSection";
-import { useState, useRef, useEffect } from "react";
 import PriceBox from "./PriceBox";
 import CourseDescription from "./CourseDescription";
-import cards from "../courses";
-import { useCountryStore, useActiveImageIndex } from "@/store";
+import images from "../courses";
+import { useCountryStore, useActiveImageIndex, useCurrentPage } from "@/store";
+import { useEffect } from "react";
 
 const LanguageSection = ({ ...otherProps }) => {
   const { activeImg, setActiveImg } = useActiveImageIndex();
   const { currentCountry } = useCountryStore();
+  const { currentPage,setCurrentPage } = useCurrentPage();
 
   useEffect(() => {
-    console.log(activeImg);
-  }, [activeImg]);
+    setCurrentPage("main")
+  }, [currentPage])
 
   return (
     <Box id="main" w="auto" h="auto" bgColor="white" {...otherProps}>
       <InteractiveSection
-        title={cards[activeImg].name}
-        images={cards}
+        title={images[activeImg].name}
+        images={images}
         marginBottom={4}
         onSlideChange={(e) => setActiveImg(e)}
       />
       <PriceBox
         monthlyFullPayment={
           currentCountry == 1
-            ? cards[activeImg].uzMonthPrice
-            : cards[activeImg].KorMonthPrice
+            ? images[activeImg].uzMonthPrice
+            : images[activeImg].KorMonthPrice
         }
         monthlyActualPayment={
           currentCountry == 1
-            ? cards[activeImg].uzMonthSalePrice
-            : cards[activeImg].KorMonthSalePrice
+            ? images[activeImg].uzMonthSalePrice
+            : images[activeImg].KorMonthSalePrice
         }
         dailyPayment={
           currentCountry == 1
-            ? cards[activeImg].uzDailyPayment
-            : cards[activeImg].KorDailyPayment
+            ? images[activeImg].uzDailyPayment
+            : images[activeImg].KorDailyPayment
         }
         currency={currentCountry == 1 ? "so'm" : "KRW"}
         marginBottom={4}
         economyPercentage="23"
         economyTotalSum={
           currentCountry == 1
-            ? cards[activeImg].uzEconomyTotalSum
-            : cards[activeImg].KorEconomyTotalSum
+            ? images[activeImg].uzEconomyTotalSum
+            : images[activeImg].KorEconomyTotalSum
         }
         title={activeImg === 2 && "Договорная цена"}
         info={activeImg === 2 && false}
         dailyTitle={activeImg === 2 && "Почасовая оплата"}
       />
-      
-      {cards[activeImg].description1 && (
+
+      {images[activeImg].description1 && (
         <CourseDescription
-          title={cards[activeImg].title1}
-          description={cards[activeImg].description1}
+          title={images[activeImg].title1}
+          description={images[activeImg].description1}
           marginLeft={1}
           mt={2}
         />
       )}
 
-      {cards[activeImg].description2 && (
+      {images[activeImg].description2 && (
         <CourseDescription
-          title={cards[activeImg].title2}
-          description={cards[activeImg].description2}
+          title={images[activeImg].title2}
+          description={images[activeImg].description2}
           marginLeft={1}
           mt={2}
         />

@@ -1,13 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Button, Image, Drawer, Portal, Box } from "@chakra-ui/react";
+import { Button, Image, Drawer, Portal, Box, Text } from "@chakra-ui/react";
 import DrawerComponent from "./DrawerComponent";
 import { BookOpen, PhoneForwarded, House } from "lucide-react";
 import Link from "next/link";
-import WebBanner from "./WebBanner";
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useCurrentPage } from "@/store";
 const navDrawer = ({ children }) => {
-  
+  const { currentPage } = useCurrentPage();
   return (
     <Drawer.Root placement="start">
       <Drawer.Trigger asChild>
@@ -18,61 +16,46 @@ const navDrawer = ({ children }) => {
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
-          <Drawer.Content bgColor="white" color="black" w="68vw">
+          <Drawer.Content bgColor="white" color="black" w="65vw">
             <Drawer.Header
               // boxShadow="0px 4px 6px -1px gray"
-              borderBottom="1px solid black"
               display="flex"
-              flexDir="row"
               alignItems="center"
-              justifyContent="flex-start"
-              gap={2}
-              h="60px"
+              
+              w="full"
+              p={2}
+              h="fit"
+              
             >
-              <Box
-                display="flex"
-                flexDir="row"
-                gap={2}
-                position="relative"
-                right={3}
-                flexWrap="wrap"
-              >
-                <Image src="infinite-logo.svg" w="30px" h="30px" />
-                <Drawer.Title>OneFluency</Drawer.Title>
-              </Box>
+              <Image src="infinite-logo.svg" w="30px" h="30px" />
+              <Text fontSize="16px" fontWeight={700}>One Fluency</Text>
             </Drawer.Header>
             <Drawer.Body
-              mt={4}
+              mt={2}
               p={2}
               bgColor="transparent"
               display="flex"
-              gap={3}
+              gap={4}
               flexDir="column"
             >
+              
               <Link href="/">
                 <DrawerComponent
+                  active={currentPage === "main"}
                   title="Главная страница"
-                  icon={<House color="black" />}
+                  icon={<House size="20px" strokeWidth={2} />}
                 />
               </Link>
-              {/* <Link href="/resources">
-                <DrawerComponent
-                  title="Ресурсы"
-                  icon={<BookOpen color="black" />}
-                />
-              </Link> */}
               <Link href="/contacts">
                 <DrawerComponent
-                  title="Контакты"
-                  icon={<PhoneForwarded color="black" />}
+                  active={currentPage === "contacts"}
+                  title="Обратная связь"
+                  icon={<PhoneForwarded size="20px" strokeWidth={2} />}
                 />
               </Link>
             </Drawer.Body>
 
-            <Drawer.Footer p={4}>
-              <AnimatePresence>
-              </AnimatePresence>
-            </Drawer.Footer>
+            <Drawer.Footer p={4}></Drawer.Footer>
           </Drawer.Content>
         </Drawer.Positioner>
       </Portal>
