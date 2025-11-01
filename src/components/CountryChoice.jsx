@@ -42,7 +42,7 @@ const CountryChoice = ({ currentCountry, onClickHandle, ...otherProps }) => {
           <Menu.Content
             p={0}
             boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
-            borderBottom="1px solid black"
+            borderBottom="2px solid #0081FB"
             rounded="md"
             bgColor="white"
           >
