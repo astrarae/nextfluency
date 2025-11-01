@@ -48,7 +48,11 @@ const LanguageSection = ({ ...otherProps }) => {
             : images[activeImg].KorEconomyTotalSum
         }
         title={activeImg === 2 && "Договорная цена"}
+<<<<<<< HEAD
         info={activeImg == 2 ? false: true}
+=======
+        info={activeImg == 2 ? false : true}
+>>>>>>> 6acaa8ce4218c77e73fade1708b1952debc6ec45
         dailyTitle={activeImg === 2 && "Почасовая оплата"}
       />
 
