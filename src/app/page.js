@@ -1,6 +1,6 @@
 "use client";
 import MainPageAnimationWrapper from "../functions/MainPageAnimationWrapper";
-import LanguageSection from "../components/LanguageSection";
+import MainSection from "../components/MainSection";
 import TabsSection from "../components/TabsSection";
 import ItSection from "../components/ItSection";
 import Navbar from "../components/Navbar";
@@ -9,7 +9,7 @@ import { useTabStore, useCountryReminder } from "@/store";
 import { Box } from "@chakra-ui/react";
 import ChangeReminder from "@/components/ChangeReminder";
 import { AnimatePresence } from "framer-motion";
-import './page.css'
+import "./page.css";
 
 export default function Home() {
   const { activeTab } = useTabStore();
@@ -35,9 +35,8 @@ export default function Home() {
           mt={4}
         >
           <AnimatePresence>{!confirmed && <ChangeReminder />}</AnimatePresence>
-          <TabsSection />
 
-          {activeTab == 1 ? <LanguageSection /> : <ItSection />}
+          <MainSection />
         </Box>
         <Footer />
       </MainPageAnimationWrapper>

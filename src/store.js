@@ -15,3 +15,8 @@ export const useCountryReminder = create((set) => ({
     confirmed: false,
     setConfirmed: (confirmation) => set({confirmed: confirmation})
 }))
+
+export const useActiveImageIndex = create((set) => ({
+    activeImg: 0,
+    setActiveImg: (index) => set({activeImg: index})
+}))

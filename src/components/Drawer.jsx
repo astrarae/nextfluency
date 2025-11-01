@@ -7,11 +7,7 @@ import WebBanner from "./WebBanner";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 const navDrawer = ({ children }) => {
-  const [ad, setAd] = useState(true);
-  function handleClick() {
-    setAd((prev) => false);
-  }
-
+  
   return (
     <Drawer.Root placement="start">
       <Drawer.Trigger asChild>
@@ -75,17 +71,6 @@ const navDrawer = ({ children }) => {
 
             <Drawer.Footer p={4}>
               <AnimatePresence>
-                {ad && (
-                  <motion.div
-                    style={{
-                      width: "100%"
-                    }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <WebBanner handleClick={handleClick} />
-                  </motion.div>
-                )}
               </AnimatePresence>
             </Drawer.Footer>
           </Drawer.Content>
