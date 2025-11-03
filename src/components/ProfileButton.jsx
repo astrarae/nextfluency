@@ -17,7 +17,7 @@ export default function ProfileButton() {
     >
       <Box display="flex" ml={2} gap={3} alignItems="center">
         <Image src={userProfilePicture} w="35px" h="35px" rounded="50%" />
-        <Box display="flex" flexDir="column">
+        <Box display="flex" minW="130px" flexDir="column">
           <Text color="black" fontWeight={700}>
             {userName}
           </Text>
@@ -26,7 +26,7 @@ export default function ProfileButton() {
           </Text>
         </Box>
       </Box>
-      <Button variant="plain" color="black" h="50px" w="auto">
+      <Button variant="plain" color="black" h="50px" w="auto" pos="relative" left="15px">
         <ChevronRight
           color="#726D6D"
           strokeWidth={2}
