@@ -3,16 +3,29 @@ import MainPageAnimationWrapper from "../functions/MainPageAnimationWrapper";
 import MainSection from "../components/MainSection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useTabStore, useCountryReminder } from "@/store";
+import { useTabStore, useCountryReminder, useTheme } from "@/store";
 import { Box } from "@chakra-ui/react";
 import ChangeReminder from "@/components/ChangeReminder";
 import { AnimatePresence } from "framer-motion";
-import "./page.css";
+import { light_theme, dark_theme } from "@/themes";
+import { useEffect } from "react";
 
+import "./page.css";
 export default function Home() {
   const { activeTab } = useTabStore();
   const { confirmed } = useCountryReminder();
+  const { theme, setTheme } = useTheme();
 
+  useEffect(() => {
+      const savedTheme = localStorage.getItem("userTheme")
+      if (savedTheme === "dark"){
+        setTheme(dark_theme)
+      }else if (savedTheme === "light"){
+        setTheme(light_theme)
+      }else {
+        setTheme(light_theme)
+      }
+    }, [])
   return (
     <Box
       w="100vw"
@@ -22,7 +35,7 @@ export default function Home() {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      bgColor="white"
+      bgColor={theme.bgColor}
     >
       <Navbar />
       <MainPageAnimationWrapper>
@@ -32,9 +45,16 @@ export default function Home() {
           p={4}
           mt={4}
         >
-          <AnimatePresence>{!confirmed && <ChangeReminder title="Не забудьте выбрать страну, чтобы увидеть актуальную информацию" status="info"/>}</AnimatePresence>
+          <AnimatePresence>
+            {!confirmed && (
+              <ChangeReminder
+                title="Не забудьте выбрать страну, чтобы увидеть актуальную информацию"
+                status="info"
+              />
+            )}
+          </AnimatePresence>
 
-          <MainSection />
+          <MainSection theme={theme}/>
         </Box>
         <Footer />
       </MainPageAnimationWrapper>

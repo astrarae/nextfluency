@@ -8,7 +8,7 @@ import BankCard from "../../components/BankCard";
 import AnimatedWrapper from "./AnimatedWrapper";
 import Navbar from "@/components/Navbar";
 import { useEffect } from "react";
-import { useCurrentPage } from "@/store";
+import { useCurrentPage, useTheme } from "@/store";
 // export const metadata = {
 //   // works because you have static routes
 //   title: "Contacts - OneFluency",
@@ -16,6 +16,7 @@ import { useCurrentPage } from "@/store";
 
 const ContactsScreen = ({ params }) => {
   const { currentPage,setCurrentPage } = useCurrentPage();
+  const { theme } = useTheme();
   
     useEffect(() => {
       setCurrentPage("contacts")
@@ -30,7 +31,7 @@ const ContactsScreen = ({ params }) => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      bgColor="white"
+      bgColor={theme.bgColor}
     >
       <Navbar />
       <AnimatedWrapper>
@@ -38,7 +39,6 @@ const ContactsScreen = ({ params }) => {
           display="flex"
           flexDir="column"
           alignItems="center"
-          bg="white"
           w={{ base: "100vw", md: "500px", lg: "600px" }}
           minH="100vh"
           overflowX="hidden"
@@ -46,14 +46,17 @@ const ContactsScreen = ({ params }) => {
           mt={6}
         >
           <ProfileCard
+            theme={theme}
             avatarImage="avatarr.jpg"
             backgroundImage="https://images.pexels.com/photos/1824273/pexels-photo-1824273.jpeg"
           >
             <CertificateCard
+              theme={theme}
               title="IELTS Certificate"
               link="https://photos.app.goo.gl/R3Ur63Xrd7Vm5xnP6"
             />
             <CertificateCard
+              theme={theme}
               title="TOPIK Certificate"
               link="https://photos.app.goo.gl/1uaFz2nF8dfxrKVR6"
             />

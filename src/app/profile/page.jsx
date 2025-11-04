@@ -4,7 +4,7 @@ import { Box, Image, Text, Button } from "@chakra-ui/react";
 import AnimatedWrapper from "./AnimatedWrapper";
 import Navbar from "@/components/Navbar";
 import { useEffect } from "react";
-import { useCurrentPage, useUserStore } from "@/store";
+import { useCurrentPage, useUserStore, useTheme } from "@/store";
 import ProfileBackgroundImage from "@/components/ProfileBackgroundImage";
 import ProfileAvatar from "@/components/ProfileAvatar";
 import { Settings2 } from "lucide-react";
@@ -18,6 +18,7 @@ import ChangeReminder from "@/components/ChangeReminder";
 
 const ContactsScreen = ({ params }) => {
   const { currentPage, setCurrentPage } = useCurrentPage();
+  const { theme } = useTheme();
   const { userBackgroundPicture, userProfilePicture, userName } =
     useUserStore();
 
@@ -34,7 +35,7 @@ const ContactsScreen = ({ params }) => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      bgColor="white"
+      bgColor={theme.bgColor}
     >
       <Navbar />
       <AnimatedWrapper>
@@ -42,7 +43,6 @@ const ContactsScreen = ({ params }) => {
           display="flex"
           flexDir="column"
           alignItems="center"
-          bg="white"
           w={{ base: "100vw", md: "500px", lg: "600px" }}
           minH="100vh"
           overflowX="hidden"
@@ -68,15 +68,17 @@ const ContactsScreen = ({ params }) => {
               roundedEndStart="md"
               roundedEndEnd="md"
               position="relative"
+              bgColor={theme.profileCardBox}
+              
             >
               <Button variant="plain" pos="absolute" right={0} mt={1}>
-                <Settings2 color="black" size={32} />
+                <Settings2 color={theme.textColor} size={32} />
               </Button>
               <Box position="absolute" bottom="15px" left="25px">
-                <Text color="black" fontWeight={700}>
+                <Text color={theme.textColor} fontWeight={700}>
                   {userName}
                 </Text>
-                <Text color="gray" fontWeight={500}>
+                <Text color={theme.subtleText} fontWeight={500}>
                   Личный кабинет
                 </Text>
               </Box>
@@ -93,21 +95,21 @@ const ContactsScreen = ({ params }) => {
             mt={4}
           >
             <Box w="full" display="flex" justifyContent="flex-start">
-              <Text ml={0.5} color="black" fontWeight={700} fontSize={16}>
+              <Text ml={0.5} color={theme.textColor} fontWeight={700} fontSize={16}>
                 Мои курсы
               </Text>
             </Box>
             <Box mt={3} w="full" h="auto">
               {/* The container for course cards */}
               {/* <CourseCard /> */}
-              <Image src="EmptyCourses.png"/>
+              <Image rounded="lg" src="EmptyCourses.png"/>
             </Box>
           </Box>
 
         </Box>
       </AnimatedWrapper>
 
-      <ProfileBottomBar />
+      <ProfileBottomBar theme={theme}/>
     </Box>
   );
 };

@@ -10,6 +10,7 @@ export default function ProfileAvatar({src}) {
       position="absolute"
       left={4}
       top="90px"
+      zIndex={10}
       border="3px solid green"
     />
   );

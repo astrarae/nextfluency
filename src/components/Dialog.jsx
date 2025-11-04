@@ -8,13 +8,13 @@ import {
 } from "@chakra-ui/react";
 import { Info } from "lucide-react";
 
-const PopupSection = ({ currency, economyPercentage, economyTotalSum }) => {
+const PopupSection = ({ theme, currency, economyPercentage, economyTotalSum }) => {
   return (
     <Dialog.Root placement="center" size="xs">
       <Dialog.Trigger asChild>
         <Button variant="plain" size="md">
           <Box position="relative" bottom="7px" left="13px">
-            <Info size={32} color="black" strokeWidth={1.7} />
+            <Info size={32} color={theme.priceIcon} strokeWidth={1.7} />
           </Box>
         </Button>
       </Dialog.Trigger>

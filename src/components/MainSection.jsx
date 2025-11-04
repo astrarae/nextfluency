@@ -6,24 +6,26 @@ import images from "../courses";
 import { useCountryStore, useActiveImageIndex, useCurrentPage } from "@/store";
 import { useEffect } from "react";
 
-const LanguageSection = ({ ...otherProps }) => {
+const MainSection = ({ theme, ...otherProps }) => {
   const { activeImg, setActiveImg } = useActiveImageIndex();
   const { currentCountry } = useCountryStore();
-  const { currentPage,setCurrentPage } = useCurrentPage();
+  const { currentPage, setCurrentPage } = useCurrentPage();
 
   useEffect(() => {
-    setCurrentPage("main")
-  }, [currentPage])
+    setCurrentPage("main");
+  }, [currentPage]);
 
   return (
-    <Box id="main" w="auto" h="auto" bgColor="white" {...otherProps}>
+    <Box id="main" w="auto" h="auto" {...otherProps}>
       <InteractiveSection
         title={images[activeImg].name}
         images={images}
         marginBottom={4}
         onSlideChange={(e) => setActiveImg(e)}
+        theme={theme}
       />
       <PriceBox
+        theme={theme}
         monthlyFullPayment={
           currentCountry == 1
             ? images[activeImg].uzMonthPrice
@@ -54,6 +56,7 @@ const LanguageSection = ({ ...otherProps }) => {
 
       {images[activeImg].description1 && (
         <CourseDescription
+          theme={theme}
           title={images[activeImg].title1}
           description={images[activeImg].description1}
           marginLeft={1}
@@ -63,6 +66,7 @@ const LanguageSection = ({ ...otherProps }) => {
 
       {images[activeImg].description2 && (
         <CourseDescription
+          theme={theme}
           title={images[activeImg].title2}
           description={images[activeImg].description2}
           marginLeft={1}
@@ -73,4 +77,4 @@ const LanguageSection = ({ ...otherProps }) => {
   );
 };
 
-export default LanguageSection;
+export default MainSection;

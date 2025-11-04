@@ -1,8 +1,9 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import "./PriceBox.css";
 import PopupSection from "./Dialog";
 import { AnimatePresence, motion } from "framer-motion";
 const PriceBox = ({
+  theme,
   title,
   dailyTitle,
   currency,
@@ -32,6 +33,7 @@ const PriceBox = ({
           display="flex"
           flexDirection="column"
           gap={2}
+          bgColor={theme.priceBoxColor}
           {...otherProps}
           m={0.5}
         >
@@ -49,40 +51,36 @@ const PriceBox = ({
                 </div>
               )}
               {monthlyActualPayment && (
-                <h1>
-                  <span
-                    style={{
-                      fontSize: "1.5rem",
-                      color: "black",
-                      fontWeight: 700,
-                    }}
+                <Box display="flex" gap={2}>
+                  <Text
+                    fontSize="1.5rem"
+                    color={theme.textColor}
+                    fontWeight={700}
                   >
                     {monthlyActualPayment} {currency}
-                  </span>
-                  <span style={{ fontSize: "1.5rem", color: "#726D6D" }}>
-                    {" "}
+                  </Text>
+                  <Text fontSize="1.5rem" color={theme.subtleText}>
                     /мес.
-                  </span>
-                </h1>
+                  </Text>
+                </Box>
               )}
 
               {title && (
                 <h1>
-                  <span
-                    style={{
-                      fontSize: "1.5rem",
-                      color: "black",
-                      fontWeight: 700,
-                    }}
+                  <Text
+                    fontSize="1.5rem"
+                    color={theme.textColor}
+                    fontWeight={700}
                   >
                     {title}
-                  </span>
+                  </Text>
                 </h1>
               )}
             </Box>
 
             {info && (
               <PopupSection
+                theme={theme}
                 currency={currency}
                 economyPercentage={economyPercentage}
                 economyTotalSum={economyTotalSum}
@@ -94,23 +92,19 @@ const PriceBox = ({
             <Box // The section that offers a daily payment method
               p={3}
               display="flex"
-              bgColor="gray.300"
+              bgColor={theme.priceBoxSubtle}
               justifyContent="center"
               alignItems="center"
               rounded="lg"
               gap={2}
             >
-              <span
-                style={{
-                  fontWeight: "700",
-                  color: "black",
-                }}
-              >
+              <Text fontWeight={700} color={theme.textColor}>
                 {dailyTitle ? dailyTitle : "Ежедевной оплатой"}
-              </span>
+              </Text>
+
               <Box
                 rounded="lg"
-                bgColor="#1f90ff"
+                bgColor={theme.priceBoxAccent}
                 display="flex"
                 justifyContent="center"
                 alignItems="center"

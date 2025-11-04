@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Box, Button, Text, Image } from "@chakra-ui/react";
-import { useUserStore } from "@/store";
+import { useUserStore, useTheme } from "@/store";
 import { ChevronRight } from "lucide-react";
+
 export default function ProfileButton() {
   const { userName, userProfilePicture } = useUserStore();
+  const { theme } = useTheme();
   return (
     <Box
       w="full"
@@ -14,11 +16,12 @@ export default function ProfileButton() {
       display="flex"
       alignItems="center"
       justifyContent="space-between"
+      bgColor={theme.profileButtonBg}
     >
       <Box display="flex" ml={2} gap={3} alignItems="center">
         <Image src={userProfilePicture} w="35px" h="35px" rounded="50%" />
         <Box display="flex" minW="130px" flexDir="column">
-          <Text color="black" fontWeight={700}>
+          <Text color={theme.textColor} fontWeight={700}>
             {userName}
           </Text>
           <Text color="gray" fontWeight={500}>

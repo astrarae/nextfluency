@@ -20,18 +20,18 @@ const countryIcon = (countryIndex) => {
   }
 };
 
-const CountryChoice = ({ currentCountry, onClickHandle, ...otherProps }) => {
+const CountryChoice = ({ theme, currentCountry, onClickHandle, ...otherProps }) => {
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button 
           {...otherProps} 
           p={0} 
-          color="black" 
+          color="transparent"
           variant="plain" 
           size="sm"
         >
-          <Text color="black" fontWeight={600} fontSize="15px">
+          <Text color={theme.textColor} fontWeight={600} fontSize="15px">
             {Countries[currentCountry]}
           </Text>
           {countryIcon(currentCountry)}
@@ -44,24 +44,24 @@ const CountryChoice = ({ currentCountry, onClickHandle, ...otherProps }) => {
             boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
             borderBottom="2px solid #0081FB"
             rounded="md"
-            bgColor="white"
+            bgColor={theme.countryChoiceContent}
           >
             <Menu.Item
               as="button"
-              color="black"
+              color={theme.textColor}
               onClick={() => onClickHandle(1)}
               display="flex"
               justifyContent="space-between"
-            >
+              >
               Узбекистан
               <UZ
                 title="Uzbekistan"
                 style={{ width: 32, height: 24, borderRadius: "5px" }}
-              />
+                />
             </Menu.Item>
             <Menu.Item
+              color={theme.textColor}
               as="button"
-              color="black"
               onClick={() => onClickHandle(2)}
               display="flex"
               justifyContent="space-between"

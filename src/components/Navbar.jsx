@@ -3,10 +3,11 @@ import { Box, Text, Image } from "@chakra-ui/react";
 import CountryChoice from "./CountryChoice";
 import { Menu } from "lucide-react";
 import NavDrawer from "./Drawer";
-import { useCountryStore } from "@/store";
+import { useCountryStore, useTheme } from "@/store";
 import { useEffect } from "react";
 
 const Navbar = ({ ...otherProps }) => {
+  const { theme } = useTheme();
   const { currentCountry, setCurrentCountry } = useCountryStore();
   const onClickHandle = (value) => {
     setCurrentCountry(value);
@@ -34,19 +35,19 @@ const Navbar = ({ ...otherProps }) => {
       top={0}
       left={0}
       zIndex={10}
-      bg="rgba(255, 255, 255, 0.3)" // semi-transparent white
+      bg={theme.navbarBg} // semi-transparent white
       backdropFilter="blur(7px)"
     >
       <Box display="flex" flexDir="row" alignItems="center" p={1} gap={2}>
         <NavDrawer>
           <Menu
-            color="black"
+            color={theme.textColor}
             style={{ position: "relative", top: 0, right: 12 }}
           />
         </NavDrawer>
         <Text
           mb={1}
-          color="black"
+          color={theme.textColor}
           fontWeight={700}
           fontSize="17px"
           display={{ base: "none", lg: "flex" }}
@@ -56,10 +57,11 @@ const Navbar = ({ ...otherProps }) => {
       </Box>
 
       <Box display="flex" flexDir="row" alignItems="center" gap={2}>
-        <Text color="black" fontWeight={700} fontSize="15px">
+        <Text color={theme.textColor} fontWeight={700} fontSize="15px">
           Ваша страна:{" "}
         </Text>
         <CountryChoice
+          theme={theme}
           currentCountry={currentCountry}
           onClickHandle={onClickHandle}
         />

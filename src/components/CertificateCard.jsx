@@ -1,7 +1,7 @@
 import { Box, Text, Button } from "@chakra-ui/react";
 import { Search } from "lucide-react";
 
-const CertificateCard = ({ title, link }) => {
+const CertificateCard = ({ theme, title, link }) => {
   return (
     <Box
       w="full"
@@ -13,10 +13,10 @@ const CertificateCard = ({ title, link }) => {
       as="a"
       href={link}
     >
-      <Text color="black" fontSize="17px">
+      <Text color={theme.textColor} fontSize="17px">
         {title}
       </Text>
-      <Button variant="plain" color="black" boxShadow="1px 1px 3px gray" p={2}>
+      <Button variant="plain"color={theme.textColor} boxShadow="1px 1px 3px gray" p={2}>
         <Search />
       </Button>
     </Box>

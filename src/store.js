@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { light_theme, dark_theme } from "./themes";
 
 export const useCountryStore = create((set) => ({
   currentCountry: 1,
@@ -39,4 +40,9 @@ export const useUserStore = create((set) => ({
     "https://i.pinimg.com/736x/0a/9d/cd/0a9dcddcfe4b3df1e6a82f214bbc046e.jpg",
   setUserBackgroundPicture: (userPicture) =>
     set({ userBackgroundPicture: userPicture }),
+}));
+
+export const useTheme = create((set) => ({
+  theme: light_theme,
+  setTheme: (theme) => set({ theme: theme }),
 }));

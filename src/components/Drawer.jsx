@@ -5,8 +5,10 @@ import DrawerComponent from "./DrawerComponent";
 import { BookOpen, PhoneForwarded, House } from "lucide-react";
 import ProfileButton from "./ProfileButton";
 import Link from "next/link";
-import { useCurrentPage } from "@/store";
+import { useCurrentPage, useTheme } from "@/store";
+import ThemeSwitcher from "./ThemeSwitcher";
 const navDrawer = ({ children }) => {
+  const { theme } = useTheme();
   const { currentPage } = useCurrentPage();
   return (
     <Drawer.Root placement="start">
@@ -18,7 +20,7 @@ const navDrawer = ({ children }) => {
       <Portal>
         <Drawer.Backdrop />
         <Drawer.Positioner>
-          <Drawer.Content bgColor="white" color="black" w="65vw">
+          <Drawer.Content bgColor={theme.bgColor} color="black" w="65vw">
             <Drawer.Header
               // boxShadow="0px 4px 6px -1px gray"
               display="flex"
@@ -29,7 +31,7 @@ const navDrawer = ({ children }) => {
             >
               <Box display="flex" alignItems="center" gap={2} ml={4.5} mt={2}>
                 <Image src="infinite-logo.svg" w="30px" h="30px" />
-                <Text fontSize="16px" fontWeight={700}>
+                <Text fontSize="16px" color={theme.textColor} fontWeight={700}>
                   One Fluency
                 </Text>
               </Box>
@@ -46,20 +48,22 @@ const navDrawer = ({ children }) => {
             >
               <Link href="/">
                 <DrawerComponent
+                  theme={theme}
                   active={currentPage === "main"}
                   title="Главная страница"
-                  icon={<House size="20px" strokeWidth={2} />}
+                  icon={<House size="20px" color={theme.drawerIcons} strokeWidth={2} />}
                 />
               </Link>
               <Link href="/contacts">
                 <DrawerComponent
+                  theme={theme}
                   active={currentPage === "contacts"}
                   title="Обратная связь"
-                  icon={<PhoneForwarded size="20px" strokeWidth={2} />}
+                  icon={<PhoneForwarded color={theme.drawerIcons} size="20px" strokeWidth={2} />}
                 />
               </Link>
             </Drawer.Body>
-
+            <ThemeSwitcher ml={3}/>
             <Drawer.Footer p={3} display="flex" flexDir="column">
               <Box border="1px solid #D9D9D9" mb={1} width="full" h="1px" />
               <Link href="/profile" style={{ width: "100%", height: "100%" }}>

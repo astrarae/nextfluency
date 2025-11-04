@@ -1,6 +1,6 @@
 import { Box, Button } from "@chakra-ui/react";
 import { Plus } from "lucide-react";
-export default function ProfileBottomBar() {
+export default function ProfileBottomBar({ theme }) {
   return (
     <Box
       h="60px"
@@ -15,7 +15,7 @@ export default function ProfileBottomBar() {
       alignItems="center"
       justifyContent="center"
       zIndex={10}
-      bg="rgba(255, 255, 255, 0.3)" // semi-transparent white
+      bg={theme.profileBarBg} // semi-transparent white
       backdropFilter="blur(7px)"
     >
       <Button 

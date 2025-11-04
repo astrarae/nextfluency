@@ -9,15 +9,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./InteractiveSection.css";
 import { useActiveImageIndex } from "@/store";
-export function Title({ title }) {
-  return (
-    <Text ml={0.5} color="black" fontSize="24px" fontWeight={700}>
-      {title}
-    </Text>
-  );
-}
 
 const InteractiveSection = ({
+  theme,
   title,
   images,
   onSlideChange,
@@ -76,57 +70,44 @@ const InteractiveSection = ({
           exit={{ opacity: 0 }}
           transition={{ duration: "0.4" }}
         >
-          <Box w="full">
-            <Title title={title} />
-          </Box>
+          <Text ml={0.5} color={theme.textColor} fontSize="24px" fontWeight={700}>
+            {title}
+          </Text>
         </motion.div>
       </AnimatePresence>
 
       {activeImg === 2 ? (
         <Link href="/contacts">
-        <Button // The button that leads to contacts
-          w="full"
-          colorPalette="gray"
-          variant="subtle"
-          mt={4}
-          rounded="md"
-          position="relative"
-          overflow="hidden"
-          bgColor="black"
-        >
-          Подробнее
-        </Button>
-      </Link>
+          <Button // The button that leads to contacts
+            w="full"
+            colorPalette="gray"
+            variant="subtle"
+            mt={4}
+            rounded="md"
+            position="relative"
+            overflow="hidden"
+            bgColor={theme.buttonColor}
+          >
+            Подробнее
+          </Button>
+        </Link>
       ) : (
         <Link href="/contacts">
-        <Button 
-          w="full"
-          colorPalette="gray"
-          variant="subtle"
-          mt={4}
-          rounded="md"
-          position="relative"
-          overflow="hidden"
-          bgColor="black"
-        >
-          Записаться на бесплатный урок
-        </Button>
-      </Link>
+          <Button
+            w="full"
+            colorPalette="gray"
+            variant="subtle"
+            mt={4}
+            rounded="md"
+            position="relative"
+            overflow="hidden"
+            bgColor={theme.buttonColor}
+          >
+            Записаться на бесплатный урок
+          </Button>
+        </Link>
       )}
 
-      {/* <Button
-        w="full"
-        border="1px solid black"
-        variant="plain"
-        mt={4}
-        rounded="md"
-        position="relative"
-        overflow="hidden"
-        color="black"
-        onClick={handleClick}
-      >
-        Подробнее
-      </Button> */}
     </Box>
   );
 };

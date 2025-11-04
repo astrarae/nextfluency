@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const CourseDescription = ({ title, description, ...otherProps }) => {
+const CourseDescription = ({ theme, title, description, ...otherProps }) => {
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -16,10 +16,12 @@ const CourseDescription = ({ title, description, ...otherProps }) => {
           boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
           p={2}
           rounded="lg"
+          bgColor={theme.descriptionBoxColor}
         >
           <Box
             p={2}
             boxShadow="1px 1px 7px rgba(0, 0, 0, 0.12)"
+            bgColor={theme.descriptionBoxSubtle}
             rounded="lg"
             display="flex"
             flexDir="column"
@@ -28,12 +30,12 @@ const CourseDescription = ({ title, description, ...otherProps }) => {
             h="auto"
             mb={4}
           >
-          <Text  color="black" fontSize={{base: "22px", md: "20px"}} fontWeight={700}>
+          <Text  color={theme.textColor} fontSize={{base: "22px", md: "20px"}} fontWeight={700}>
             {title}
           </Text>
 
           </Box>
-          <Text w="auto" ml={2} color="black" fontSize={{base: "20px", md: "18px"}} fontWeight="500">
+          <Text color={theme.textColor} w="auto" ml={2} fontSize={{base: "20px", md: "18px"}} fontWeight="500">
             {description}
           </Text>
         </Box>
