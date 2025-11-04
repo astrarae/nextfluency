@@ -1,3 +1,5 @@
+import { FaMoon, FaSun } from "react-icons/fa";
+import { Icon } from "@chakra-ui/react";
 export const light_theme = {
     dailyColor: "#0082FB",
     bgColor: "white",
@@ -20,7 +22,7 @@ export const light_theme = {
     profileButtonBg: "none",
     profileBarBg: "rgba(255, 255, 255, 0.3)",
     teacherProfileBox: "none",
-    
+    themeIcon: <Icon as={FaSun} color="yellow.400" />
 }
 
 export const dark_theme = {
@@ -45,5 +47,6 @@ export const dark_theme = {
     profileButtonBg: "#212121ff",
     profileCardBox: "#212121ff",
     profileBarBg: "rgba(0, 0, 0, 0.5)",
-    teacherProfileBox: "#212121ff"
+    teacherProfileBox: "#212121ff",
+    themeIcon: <Icon as={FaMoon} color="gray.400" />
 }

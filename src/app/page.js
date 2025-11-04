@@ -3,7 +3,7 @@ import MainPageAnimationWrapper from "../functions/MainPageAnimationWrapper";
 import MainSection from "../components/MainSection";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useTabStore, useCountryReminder, useTheme } from "@/store";
+import { useCountryReminder, useTheme } from "@/store";
 import { Box } from "@chakra-ui/react";
 import ChangeReminder from "@/components/ChangeReminder";
 import { AnimatePresence } from "framer-motion";
@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 import "./page.css";
 export default function Home() {
-  const { activeTab } = useTabStore();
+
   const { confirmed } = useCountryReminder();
   const { theme, setTheme } = useTheme();
 

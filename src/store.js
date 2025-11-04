@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { light_theme, dark_theme } from "./themes";
 
+
 export const useCountryStore = create((set) => ({
   currentCountry: 1,
   setCurrentCountry: (country) => set({ currentCountry: country }),
