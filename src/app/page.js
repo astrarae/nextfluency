@@ -12,20 +12,19 @@ import { useEffect } from "react";
 
 import "./page.css";
 export default function Home() {
-
   const { confirmed } = useCountryReminder();
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-      const savedTheme = localStorage.getItem("userTheme")
-      if (savedTheme === "dark"){
-        setTheme(dark_theme)
-      }else if (savedTheme === "light"){
-        setTheme(light_theme)
-      }else {
-        setTheme(light_theme)
-      }
-    }, [])
+    const savedTheme = localStorage.getItem("userTheme");
+    if (savedTheme === "dark") {
+      setTheme(dark_theme);
+    } else if (savedTheme === "light") {
+      setTheme(light_theme);
+    } else {
+      setTheme(light_theme);
+    }
+  }, []);
   return (
     <Box
       w="100vw"
@@ -54,7 +53,7 @@ export default function Home() {
             )}
           </AnimatePresence>
 
-          <MainSection theme={theme}/>
+          <MainSection theme={theme} />
         </Box>
         <Footer />
       </MainPageAnimationWrapper>

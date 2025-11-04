@@ -1,14 +1,12 @@
-import {
-  Button,
-  Text,
-  Dialog,
-  Portal,
-  Box,
-  FormatNumber,
-} from "@chakra-ui/react";
+import { Button, Text, Dialog, Portal, Box } from "@chakra-ui/react";
 import { Info } from "lucide-react";
 
-const PopupSection = ({ theme, currency, economyPercentage, economyTotalSum }) => {
+const PopupSection = ({
+  theme,
+  currency,
+  economyPercentage,
+  economyTotalSum,
+}) => {
   return (
     <Dialog.Root placement="center" size="xs">
       <Dialog.Trigger asChild>
@@ -21,13 +19,28 @@ const PopupSection = ({ theme, currency, economyPercentage, economyTotalSum }) =
       <Portal>
         <Dialog.Backdrop />
         <Dialog.Positioner>
-          <Dialog.Content ml={4} mr={4} bgColor="#FAFAFA" color="black">
-            <Dialog.Header>
-              <Dialog.Title>
-                <Text>Подробнее</Text>
+          <Dialog.Content
+            minW="270pt"
+            ml={4}
+            mr={4}
+            bgColor={theme.dialogBg}
+            backdropFilter="blur(7px)"
+            rounded="2xl"
+            color="black"
+          >
+            <Dialog.Header
+              display="flex"
+              pt={0}
+              justifyContent="center"
+              alignItems="flex-end"
+            >
+              <Dialog.Title color={theme.textColor}>
+                <Text pos="relative" fontWeight={500} top={5}>
+                  Подробнее
+                </Text>
               </Dialog.Title>
             </Dialog.Header>
-            <Dialog.Body>
+            <Dialog.Body color={theme.textColor}>
               <ul style={{ listStyleType: "disc", marginLeft: "1.5rem" }}>
                 <li>
                   Общее количество занятий в месяц составляет{" "}
@@ -51,9 +64,20 @@ const PopupSection = ({ theme, currency, economyPercentage, economyTotalSum }) =
                 </li>
               </ul>
             </Dialog.Body>
-            <Dialog.Footer>
+            <Dialog.Footer p={0} pb={1}>
               <Dialog.ActionTrigger asChild>
-                <Button w="full" variant="surface" rounded="lg">
+                <Button
+                  w="full"
+                  roundedStartStart="none"
+                  roundedStartEnd="none"
+                  roundedEndStart="2xl"
+                  borderTop="1px solid gray"
+                  roundedEndEnd="2xl"
+                  variant="plain"
+                  color={theme.dailyColor}
+                  fontWeight={500}
+                  
+                >
                   Ясно
                 </Button>
               </Dialog.ActionTrigger>
