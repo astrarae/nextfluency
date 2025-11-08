@@ -1,6 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
-
+import { useTheme } from "@/store";
 const Footer = ({ ...otherProps }) => {
+  const { theme } = useTheme();
   return (
     <Box
       {...otherProps}
@@ -13,10 +14,10 @@ const Footer = ({ ...otherProps }) => {
       mt="40px"
       p={0}
     >
-      <Text color="black" fontSize="0.7rem">
+      <Text color={theme.textColor} fontSize="0.7rem">
         Made by the author of these courses.{" "}
       </Text>
-      <Text color="black" fontSize="0.6rem">
+      <Text color={theme.textColor} fontSize="0.6rem">
         For any inquiries regarding website creation, contact the contacts
         included.{" "}
       </Text>
