@@ -1,4 +1,5 @@
-import { Button, Box, Image, Text } from "@chakra-ui/react";
+import { Button, Box, Text } from "@chakra-ui/react";
+import Image from 'next/image'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { AnimatePresence, motion } from "framer-motion";
@@ -50,7 +51,12 @@ const InteractiveSection = ({
       >
         {images.map((item, index) => (
           <SwiperSlide key={index}>
-            <Image src={item.imgSrc} rounded="md" />
+            <Image 
+              width={500}
+              height={500} 
+              src={item.imgSrc} 
+              rounded="md" 
+            />
           </SwiperSlide>
         ))}
 
