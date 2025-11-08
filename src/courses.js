@@ -71,9 +71,9 @@ const cards = [
         Свяжись со мной, и мы создадим сайт, который будет говорить за тебя.
     `,
     name: `Создам твой вебсайт`,
-    uzDailyPayment: "84 000",
+    uzDailyPayment: "240 000",
 
-    KorDailyPayment: "10 500",
+    KorDailyPayment: "28 000",
   },
 
   {
