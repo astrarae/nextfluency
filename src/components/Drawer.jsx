@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Button, Image, Drawer, Portal, Box, Text } from "@chakra-ui/react";
+import { Button, Drawer, Portal, Box, Text } from "@chakra-ui/react";
+import Image from 'next/image'
 import DrawerComponent from "./DrawerComponent";
-import { BookOpen, PhoneForwarded, House } from "lucide-react";
+import { PhoneForwarded, House } from "lucide-react";
 import ProfileButton from "./ProfileButton";
 import Link from "next/link";
 import { useCurrentPage, useTheme } from "@/store";
@@ -30,7 +31,7 @@ const navDrawer = ({ children }) => {
               h="fit"
             >
               <Box display="flex" alignItems="center" gap={2} ml={4.5} mt={2}>
-                <Image src="infinite-logo.svg" w="30px" h="30px" />
+                <Image src="infinite-logo.svg" width={30} height={30} />
                 <Text fontSize="16px" color={theme.textColor} fontWeight={700}>
                   One Fluency
                 </Text>
