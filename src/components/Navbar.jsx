@@ -22,11 +22,9 @@ const Navbar = ({ ...otherProps }) => {
   return (
     <Box
       {...otherProps}
-      pt={2}
-      pl={4}
-      pr={4}
+      p={4}
       w="100%"
-      h="auto"
+      h="55px"
       display="flex"
       flexDirection="row"
       alignItems="center"

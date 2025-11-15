@@ -107,6 +107,7 @@ const InteractiveSection = ({
             rounded="md"
             position="relative"
             overflow="hidden"
+            color={theme.buttonTextColor}
             bgColor={theme.buttonColor}
           >
             Записаться на бесплатный урок

@@ -31,7 +31,7 @@ const ContactsScreen = ({ params }) => {
       w="100vw"
       h="100vh"
       overflowX="hidden"
-      display="flex"
+      display="relative"
       justifyContent="center"
       alignItems="center"
       flexDirection="column"

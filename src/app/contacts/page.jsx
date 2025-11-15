@@ -27,7 +27,7 @@ const ContactsScreen = ({ params }) => {
       w="100vw"
       h="100vh"
       overflowX="hidden"
-      display="flex"
+      display="relative"
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
@@ -43,7 +43,7 @@ const ContactsScreen = ({ params }) => {
           minH="100vh"
           overflowX="hidden"
           p={4}
-          mt={6}
+          mt={2}
         >
           <ProfileCard
             theme={theme}

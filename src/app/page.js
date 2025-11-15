@@ -28,9 +28,8 @@ export default function Home() {
   return (
     <Box
       w="100vw"
-      h="100vh"
-      overflowY="auto"
-      display="flex"
+      h="auto"
+      display="relative"
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
@@ -42,7 +41,7 @@ export default function Home() {
           w={{ base: "100vw", md: "500px", lg: "600px" }}
           minH="100vh"
           p={4}
-          mt={4}
+          
         >
           <AnimatePresence>
             {!confirmed && (

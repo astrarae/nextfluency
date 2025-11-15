@@ -12,6 +12,7 @@ const Footer = ({ ...otherProps }) => {
       justifyContent="center"
       alignItems="center"
       mt="40px"
+      mb={5}
       p={0}
     >
       <Text color={theme.textColor} fontSize="0.7rem">
