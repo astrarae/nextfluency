@@ -43,7 +43,7 @@ const ContactsScreen = ({ params }) => {
           minH="100vh"
           overflowX="hidden"
           p={4}
-          mt={2}
+          m="auto"
         >
           <ProfileCard
             theme={theme}

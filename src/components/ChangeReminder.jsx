@@ -13,6 +13,7 @@ export default function ChangeReminder({ title,status,onClickHandle, ...otherPro
         {...otherProps}
         status={status}
         h="fit"
+        w="auto"
         display="flex"
         alignItems="center"
         justifyContent="center"

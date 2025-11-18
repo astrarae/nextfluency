@@ -41,6 +41,7 @@ export default function Home() {
           w={{ base: "100vw", md: "500px", lg: "600px" }}
           minH="100vh"
           p={4}
+          m="auto"
           
         >
           <AnimatePresence>

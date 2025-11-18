@@ -47,7 +47,7 @@ const ContactsScreen = ({ params }) => {
           minH="100vh"
           overflowX="hidden"
           p={4}
-          mt={6}
+          m="auto"
         >
         <ChangeReminder status="error" title="Данная секция находится под разработкой!"/>
           <Box
@@ -102,7 +102,7 @@ const ContactsScreen = ({ params }) => {
             <Box mt={3} w="full" h="auto">
               {/* The container for course cards */}
               {/* <CourseCard /> */}
-              <Image rounded="lg" src="EmptyCourses.png"/>
+              <Image m="auto" rounded="lg" src="EmptyCourses.png"/>
             </Box>
           </Box>
 
