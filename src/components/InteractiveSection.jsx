@@ -51,9 +51,10 @@ const InteractiveSection = ({
       >
         {images.map((item, index) => (
           <SwiperSlide key={index}>
-            <Image 
+            <Image
               width={500}
-              height={500} 
+              height={500}
+              alt="course-image" 
               src={item.imgSrc} 
               rounded="md" 
             />
@@ -76,7 +77,7 @@ const InteractiveSection = ({
           exit={{ opacity: 0 }}
           transition={{ duration: "0.4" }}
         >
-          <Text ml={0.5} color={theme.textColor} fontSize="24px" fontWeight={700}>
+          <Text mt={3} ml={0.5} color={theme.textColor} fontSize="24px" fontWeight={700}>
             {title}
           </Text>
         </motion.div>

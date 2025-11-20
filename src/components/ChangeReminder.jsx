@@ -1,15 +1,24 @@
 import { Alert, CloseButton } from "@chakra-ui/react";
 import { useCountryReminder, useTheme } from "@/store";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 export default function ChangeReminder({ title,status,onClickHandle, ...otherProps }) {
   const { setConfirmed } = useCountryReminder();
   const { theme } = useTheme();
+  const divRef = useRef(null);
+  const handleClick = () => {
+    divRef.current?.remove();
+  };
   return (
     <motion.div
         exit={{opacity: 0.5, x: "-200px"}}
         transition={{duration: 0.2}}
+        style={{
+          width: "100%"
+        }}
     >
       <Alert.Root
+      ref={divRef}
         {...otherProps}
         status={status}
         h="fit"
@@ -30,7 +39,7 @@ export default function ChangeReminder({ title,status,onClickHandle, ...otherPro
           <Alert.Description fontWeight={500}>{title}</Alert.Description>
         </Alert.Content>
         <CloseButton
-          onClick={() => setConfirmed(true)}
+          onClick={handleClick}
           variant="plain"
           color={theme.textColor}
         />

@@ -62,6 +62,9 @@ const PopupSection = ({
                   </span>
                   .
                 </li>
+                <li>
+                  Длительность одного урока составляет <strong>1 час</strong>.
+                </li>
               </ul>
             </Dialog.Body>
             <Dialog.Footer p={0} pb={1}>

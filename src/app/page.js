@@ -2,8 +2,7 @@
 import MainPageAnimationWrapper from "../functions/MainPageAnimationWrapper";
 import MainSection from "../components/MainSection";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { useCountryReminder, useTheme } from "@/store";
+import { useTheme } from "@/store";
 import { Box } from "@chakra-ui/react";
 import ChangeReminder from "@/components/ChangeReminder";
 import { AnimatePresence } from "framer-motion";
@@ -12,9 +11,9 @@ import { useEffect } from "react";
 
 import "./page.css";
 export default function Home() {
-  const { confirmed } = useCountryReminder();
   const { theme, setTheme } = useTheme();
 
+  // === LOADING SAVED THEME ===
   useEffect(() => {
     const savedTheme = localStorage.getItem("userTheme");
     if (savedTheme === "dark") {
@@ -25,6 +24,8 @@ export default function Home() {
       setTheme(light_theme);
     }
   }, []);
+
+  // ==== ==== ====
   return (
     <Box
       w="100vw"
@@ -42,20 +43,16 @@ export default function Home() {
           minH="100vh"
           p={4}
           m="auto"
-          
         >
           <AnimatePresence>
-            {!confirmed && (
-              <ChangeReminder
-                title="Не забудьте выбрать страну, чтобы увидеть актуальную информацию"
-                status="info"
-              />
-            )}
+            <ChangeReminder
+              title="Не забудьте выбрать страну, чтобы увидеть актуальную информацию"
+              status="info"
+            />
           </AnimatePresence>
 
           <MainSection theme={theme} />
         </Box>
-        <Footer />
       </MainPageAnimationWrapper>
     </Box>
   );

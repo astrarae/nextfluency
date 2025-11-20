@@ -11,6 +11,7 @@ import { Settings2 } from "lucide-react";
 import ProfileBottomBar from "@/components/ProfileBottomBar";
 import CourseCard from "@/components/CourseCard";
 import ChangeReminder from "@/components/ChangeReminder";
+import { light_theme, dark_theme } from "@/themes";
 // export const metadata = {
 //   // works because you have static routes
 //   title: "Contacts - OneFluency",
@@ -18,13 +19,27 @@ import ChangeReminder from "@/components/ChangeReminder";
 
 const ContactsScreen = ({ params }) => {
   const { currentPage, setCurrentPage } = useCurrentPage();
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const { userBackgroundPicture, userProfilePicture, userName } =
     useUserStore();
 
   useEffect(() => {
     setCurrentPage("profile");
   }, [currentPage]);
+
+  // === LOADING SAVED THEME ===
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("userTheme");
+    if (savedTheme === "dark") {
+      setTheme(dark_theme);
+    } else if (savedTheme === "light") {
+      setTheme(light_theme);
+    } else {
+      setTheme(light_theme);
+    }
+  }, []);
+
+  // ==== ==== ====
 
   return (
     <Box
@@ -49,7 +64,10 @@ const ContactsScreen = ({ params }) => {
           p={4}
           m="auto"
         >
-        <ChangeReminder status="error" title="Данная секция находится под разработкой!"/>
+          <ChangeReminder
+            status="error"
+            title="Данная секция находится под разработкой!"
+          />
           <Box
             mt={2}
             w="full"
@@ -69,7 +87,6 @@ const ContactsScreen = ({ params }) => {
               roundedEndEnd="md"
               position="relative"
               bgColor={theme.profileCardBox}
-              
             >
               <Button variant="plain" pos="absolute" right={0} mt={1}>
                 <Settings2 color={theme.textColor} size={32} />
@@ -95,21 +112,25 @@ const ContactsScreen = ({ params }) => {
             mt={4}
           >
             <Box w="full" display="flex" justifyContent="flex-start">
-              <Text ml={0.5} color={theme.textColor} fontWeight={700} fontSize={16}>
+              <Text
+                ml={0.5}
+                color={theme.textColor}
+                fontWeight={700}
+                fontSize={16}
+              >
                 Мои курсы
               </Text>
             </Box>
             <Box mt={3} w="full" h="auto">
               {/* The container for course cards */}
               {/* <CourseCard /> */}
-              <Image m="auto" rounded="lg" src="EmptyCourses.png"/>
+              <Image m="auto" w="full" rounded="lg" src="EmptyCourses.png" />
             </Box>
           </Box>
-
         </Box>
       </AnimatedWrapper>
 
-      <ProfileBottomBar theme={theme}/>
+      <ProfileBottomBar theme={theme} />
     </Box>
   );
 };

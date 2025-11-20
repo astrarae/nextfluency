@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import { Box } from "@chakra-ui/react";
 import ProfileCard from "../../components/ProfileCard";
-import Footer from "../../components/Footer";
 import CertificateCard from "../../components/CertificateCard";
 import ContactCard from "../../components/ContactCard";
 import BankCard from "../../components/BankCard";
@@ -9,19 +8,33 @@ import AnimatedWrapper from "./AnimatedWrapper";
 import Navbar from "@/components/Navbar";
 import { useEffect } from "react";
 import { useCurrentPage, useTheme } from "@/store";
+import { light_theme, dark_theme } from "@/themes";
 // export const metadata = {
 //   // works because you have static routes
 //   title: "Contacts - OneFluency",
 // };
 
 const ContactsScreen = ({ params }) => {
-  const { currentPage,setCurrentPage } = useCurrentPage();
-  const { theme } = useTheme();
-  
-    useEffect(() => {
-      setCurrentPage("contacts")
-    }, [currentPage])
+  const { currentPage, setCurrentPage } = useCurrentPage();
+  const { theme, setTheme } = useTheme();
 
+  useEffect(() => {
+    setCurrentPage("contacts");
+  }, [currentPage]);
+
+  // === LOADING SAVED THEME ===
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("userTheme");
+    if (savedTheme === "dark") {
+      setTheme(dark_theme);
+    } else if (savedTheme === "light") {
+      setTheme(light_theme);
+    } else {
+      setTheme(light_theme);
+    }
+  }, []);
+
+  // ==== ==== ====
   return (
     <Box
       w="100vw"
@@ -86,7 +99,6 @@ const ContactsScreen = ({ params }) => {
               link="https://discord.gg/P5Keaq9N"
             />
           </Box>
-          <Footer />
         </Box>
       </AnimatedWrapper>
     </Box>
