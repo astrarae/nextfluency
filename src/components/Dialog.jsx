@@ -1,5 +1,6 @@
 import { Button, Text, Dialog, Portal, Box } from "@chakra-ui/react";
 import { Info } from "lucide-react";
+import { useActivePriceTab } from "@/store";
 
 const PopupSection = ({
   theme,
@@ -7,6 +8,72 @@ const PopupSection = ({
   economyPercentage,
   economyTotalSum,
 }) => {
+  const { currentTab } = useActivePriceTab();
+  const Description = (type = 1) => {
+    if (type === 1) {
+      return (
+        <ul style={{ listStyleType: "disc", marginLeft: "1.5rem" }}>
+          <li>
+            Общее количество занятий в месяц составляет{" "}
+            <span style={{ fontWeight: 700 }}>12 уроков</span>.
+          </li>
+          <li>
+            График дней и часов уроков обсуждается индивидуально с каждым
+            учеником.
+          </li>
+
+          <li>
+            При оплате за весь месяц, вы экономите{" "}
+            <span style={{ fontWeight: 700 }}>{economyPercentage}%</span>, что
+            приравнивается к{" "}
+            <span style={{ fontWeight: 700 }}>
+              {economyTotalSum} {currency}
+            </span>
+            .
+          </li>
+          <li>
+            Длительность одного урока составляет <strong>1 час</strong>.
+          </li>
+        </ul>
+      );
+    } else if (type === 2) {
+      return (
+        <ul style={{ listStyleType: "disc", marginLeft: "1.5rem" }}>
+          <li>
+            Общее количество занятий в месяц составляет{" "}
+            <span style={{ fontWeight: 700 }}>12 уроков</span>.
+          </li>
+          <li>График дней и часов уроков обсуждается с каждой группой.</li>
+
+          <li>
+            При оплате за весь месяц, вы экономите{" "}
+            <span style={{ fontWeight: 700 }}>{economyPercentage}%</span>, что
+            приравнивается к{" "}
+            <span style={{ fontWeight: 700 }}>
+              {economyTotalSum} {currency}
+            </span>
+            .
+          </li>
+          <li>
+            Длительность одного урока составляет <strong>1 час</strong>.
+          </li>
+          <li>
+            Если учебная группа не сформирована, студент{" "}
+            <strong>ожидает до 7 дней </strong>. Если по истечении указанного
+            срока группа всё ещё не сформирована, студенту предлагается месячный
+            курс индивидуальных занятий.
+          </li>
+          <li>
+            Если по завершении месячного курса группа всё ещё не сформирована,
+            студент принимает решение — продолжить ожидание формирования группы
+            либо прекратить участие.
+          </li>
+        </ul>
+      );
+    }
+
+    return 1;
+  };
   return (
     <Dialog.Root placement="center" size="xs">
       <Dialog.Trigger asChild>
@@ -41,32 +108,9 @@ const PopupSection = ({
               </Dialog.Title>
             </Dialog.Header>
             <Dialog.Body color={theme.textColor}>
-              <ul style={{ listStyleType: "disc", marginLeft: "1.5rem" }}>
-                <li>
-                  Общее количество занятий в месяц составляет{" "}
-                  <span style={{ fontWeight: 700 }}>12 уроков</span>.
-                </li>
-                <li>
-                  График дней и часов уроков обсуждается индивидуально с каждым
-                  учеником.
-                </li>
-                <li>
-                  Все цены выставлены в расчёте на индивидуальные занятия.
-                </li>
-                <li>
-                  При оплате за весь месяц, вы экономите{" "}
-                  <span style={{ fontWeight: 700 }}>{economyPercentage}%</span>,
-                  что приравнивается к{" "}
-                  <span style={{ fontWeight: 700 }}>
-                    {economyTotalSum} {currency}
-                  </span>
-                  .
-                </li>
-                <li>
-                  Длительность одного урока составляет <strong>1 час</strong>.
-                </li>
-              </ul>
+              {Description(Number(currentTab))}
             </Dialog.Body>
+
             <Dialog.Footer p={0} pb={1}>
               <Dialog.ActionTrigger asChild>
                 <Button
@@ -79,7 +123,7 @@ const PopupSection = ({
                   variant="plain"
                   color={theme.dailyColor}
                   fontWeight={500}
-                  
+                  p={2}
                 >
                   Ясно
                 </Button>

@@ -7,6 +7,11 @@ export const useCountryStore = create((set) => ({
   setCurrentCountry: (country) => set({ currentCountry: country }),
 }));
 
+export const useActivePriceTab = create((set) => ({
+  currentTab: 1,
+  setCurrentTab: (tab) => set({currentTab: tab}),
+}));
+
 export const useTabStore = create((set) => ({
   activeTab: 1,
   setActiveTab: (tab) => set({ activeTab: tab }),

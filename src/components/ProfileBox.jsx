@@ -13,7 +13,7 @@ export default function ProfileBox({ children, ...otherProps }) {
       bgColor={theme.teacherProfileBox}
       h="auto"
       gap={2}
-
+      justifyContent="space-between"
     >
       {children}
     </Box>

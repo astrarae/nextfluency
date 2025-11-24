@@ -29,12 +29,14 @@ export default function Home() {
   return (
     <Box
       w="100vw"
-      h="auto"
+      h="100vh"
+      overflowY="auto"
       display="relative"
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
       bgColor={theme.bgColor}
+      
     >
       <Navbar />
       <MainPageAnimationWrapper>
@@ -43,6 +45,7 @@ export default function Home() {
           minH="100vh"
           p={4}
           m="auto"
+          bgColor={theme.bgColor}
         >
           <AnimatePresence>
             <ChangeReminder

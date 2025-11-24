@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,6 +21,15 @@ import { Provider } from "../components/ui/provider";
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* <meta name="theme-color" content="#ffffff" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="white" /> */}
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider>{children}</Provider>
         <Analytics />

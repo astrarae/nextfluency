@@ -3,6 +3,7 @@ import { Box, Image, Text } from "@chakra-ui/react";
 import { Mail, Phone, FileUser, CircleUser } from "lucide-react";
 import ProfileBox from "./ProfileBox";
 import StatusTag from "./StatusTag";
+import Clipboard from "./Clipboard";
 const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
   return (
     <Box
@@ -34,7 +35,12 @@ const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
             border="3px solid #0064e0"
           />
 
-          <Box display="flex" flexDirection="column" alignItems="flex-start" gap={1}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="flex-start"
+            gap={1}
+          >
             <Text color={theme.textColor} fontSize="18px" fontWeight={500}>
               Ли Валерий
             </Text>
@@ -47,9 +53,13 @@ const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
       </ProfileBox>
 
       <ProfileBox>
-        <CircleUser style={{ marginTop: "3px" }} size={24} color={theme.textColor} />
+        <CircleUser
+          style={{ marginTop: "3px" }}
+          size={24}
+          color={theme.textColor}
+        />
 
-        <Box w="full" display="flex" flexDir="column" >
+        <Box w="full" display="flex" flexDir="column">
           <Text color={theme.subtleText} fontSize="17px">
             Обо мне
           </Text>
@@ -69,33 +79,47 @@ const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
         </Box>
       </ProfileBox>
 
-      
-        <ProfileBox>
-          <Mail style={{ marginTop: "3px" }} size={24} color={theme.textColor} />
+      <ProfileBox>
+        <Box display="flex" gap={2}>
+          <Mail
+            style={{ marginTop: "3px" }}
+            size={24}
+            color={theme.textColor}
+          />
 
           <Box flexWrap="wrap">
             <Text color={theme.subtleText} fontSize="17px">
               Электронная почта
             </Text>
             <Text color={theme.textColor} fontSize="17px">
-              astrarae.stelr@outlook.com
+              onefluency.io@icloud.com
             </Text>
           </Box>
-        </ProfileBox>
+        </Box>
 
-        <ProfileBox>
-          <Phone style={{ marginTop: "3px" }} size={24} color={theme.textColor} />
+        <Clipboard content="onefluency.io@icloud.com" />
+      </ProfileBox>
 
-          <Box >
+      <ProfileBox>
+        <Box display="flex" gap={2}>
+          <Phone
+            style={{ marginTop: "3px" }}
+            size={24}
+            color={theme.textColor}
+          />
+
+          <Box flexWrap="wrap">
             <Text color={theme.subtleText} fontSize="17px">
-              Телефон 
+              Номер телефона
             </Text>
             <Text color={theme.textColor} fontSize="17px">
               +998 50 2222 875
             </Text>
           </Box>
-        </ProfileBox>
-      
+        </Box>
+
+        <Clipboard content="998502222875" />
+      </ProfileBox>
 
       <Box
         w="full"
@@ -108,7 +132,11 @@ const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
         p={4}
         rounded="lg"
       >
-        <FileUser style={{ marginTop: "3px" }} size={24} color={theme.textColor} />
+        <FileUser
+          style={{ marginTop: "3px" }}
+          size={24}
+          color={theme.textColor}
+        />
 
         <Box w="full" display="flex" flexDir="column" gap={5}>
           <Text color={theme.subtleText} fontSize="17px">

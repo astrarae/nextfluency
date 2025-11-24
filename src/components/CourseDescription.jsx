@@ -15,7 +15,7 @@ const CourseDescription = ({ theme, title, description, ...otherProps }) => {
           {...otherProps}
           boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
           p={2}
-          rounded="lg"
+          rounded="2xl"
           bgColor={theme.descriptionBoxColor}
         >
           <Box

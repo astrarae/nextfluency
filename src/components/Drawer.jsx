@@ -12,16 +12,16 @@ const navDrawer = ({ children }) => {
   const { theme } = useTheme();
   const { currentPage } = useCurrentPage();
   return (
-    <Drawer.Root placement="start">
+    <Drawer.Root preventScroll trapFocus placement="start" >
       <Drawer.Trigger asChild>
         <Button variant="plain" p={0} size="md">
           {children}
         </Button>
       </Drawer.Trigger>
       <Portal>
-        <Drawer.Backdrop />
-        <Drawer.Positioner>
-          <Drawer.Content bgColor={theme.bgColor} color="black" w="65vw">
+        <Drawer.Backdrop  backdropFilter="blur(1px)"/>
+        <Drawer.Positioner p={0}>
+          <Drawer.Content bgColor={theme.bgColor}  roundedRight="2xl" color="black" w="65vw">
             <Drawer.Header
               // boxShadow="0px 4px 6px -1px gray"
               display="flex"

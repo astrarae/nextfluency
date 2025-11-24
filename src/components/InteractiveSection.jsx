@@ -1,5 +1,5 @@
-import { Button, Box, Text } from "@chakra-ui/react";
-import Image from 'next/image'
+import { Button, Box, Text, Image } from "@chakra-ui/react";
+// import Image from 'next/image'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,66 +9,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./InteractiveSection.css";
-import { useActiveImageIndex } from "@/store";
+import { useActiveImageIndex, useTheme } from "@/store";
 
 const InteractiveSection = ({
   theme,
   title,
+  description,
   images,
   onSlideChange,
   handleClick,
   ...otherProps
 }) => {
-  const { activeImg } = useActiveImageIndex();
-  const progressCircle = useRef(null);
-  const progressContent = useRef(null);
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    if (!progressCircle.current || !progressContent.current) return;
-    progressCircle.current.style.setProperty("--progress", 1 - progress);
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  };
-  return (
-    <Box {...otherProps}>
-      <Swiper // The main card swiper
-        loop={true}
-        pagination={{
-          dynamicBullets: true,
-          clickable: true,
-        }}
-        navigation={true}
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 45000,
-          disableOnInteraction: false,
-        }}
-        modules={[Pagination, Autoplay, Navigation]}
-        className="mySwiper"
-        onInit={() => console.log("Swiper initialized")}
-        onRealIndexChange={(e) => onSlideChange(e.realIndex)}
-        slidesPerView={1}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
-      >
-        {images.map((item, index) => (
-          <SwiperSlide key={index}>
-            <Image
-              width={500}
-              height={500}
-              alt="course-image" 
-              src={item.imgSrc} 
-              rounded="md" 
-            />
-          </SwiperSlide>
-        ))}
-
-        <div className="autoplay-progress" slot="container-end">
-          <svg viewBox="0 0 48 48" ref={progressCircle}>
-            <circle cx="24" cy="24" r="20"></circle>
-          </svg>
-          <span ref={progressContent}></span>
-        </div>
-      </Swiper>
-
+  const CourseTitle = () => {
+    return (
       <AnimatePresence mode="wait">
         <motion.div
           key={title}
@@ -77,45 +30,137 @@ const InteractiveSection = ({
           exit={{ opacity: 0 }}
           transition={{ duration: "0.4" }}
         >
-          <Text mt={3} ml={0.5} color={theme.textColor} fontSize="24px" fontWeight={700}>
+          <Text mt={3} ml={0.5} color="white" fontSize="2rem" fontWeight={700}>
             {title}
           </Text>
         </motion.div>
       </AnimatePresence>
+    );
+  };
 
-      {activeImg === 2 ? (
-        <Link href="/contacts">
-          <Button // The button that leads to contacts
-            w="full"
-            colorPalette="gray"
-            variant="subtle"
-            mt={4}
-            rounded="md"
-            position="relative"
-            overflow="hidden"
-            bgColor={theme.buttonColor}
+  const CourseDescription = ({ description, ...otherProps }) => {
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={description}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: "0.4" }}
+        >
+          <Text
+            textAlign="left"
+            ml={0.5}
+            {...otherProps}
+            whiteSpace="wrap"
+            color="white"
+            fontSize="1rem"
+            fontWeight={700}
           >
-            Подробнее
-          </Button>
-        </Link>
-      ) : (
-        <Link href="/contacts">
-          <Button
-            w="full"
-            colorPalette="gray"
-            variant="subtle"
-            mt={4}
-            rounded="md"
-            position="relative"
-            overflow="hidden"
-            color={theme.buttonTextColor}
-            bgColor={theme.buttonColor}
-          >
-            Записаться на бесплатный урок
-          </Button>
-        </Link>
-      )}
+            {description}
+          </Text>
+        </motion.div>
+      </AnimatePresence>
+    );
+  };
+  const { activeImg } = useActiveImageIndex();
 
+  const progressCircle = useRef(null);
+  const progressContent = useRef(null);
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    if (!progressCircle.current || !progressContent.current) return;
+    progressCircle.current.style.setProperty("--progress", 1 - progress);
+    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
+  return (
+    <Box
+      {...otherProps}
+      rounded="2xl"
+      boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
+    >
+      <Swiper // The main card swiper
+        style={{
+          height: "550px",
+        }}
+        loop={true}
+        pagination={{
+          dynamicBullets: true,
+          clickable: true,
+        }}
+        navigation={true}
+        spaceBetween={30}
+        centeredSlides={true}
+        modules={[Navigation]}
+        className="mySwiper"
+        onRealIndexChange={(e) => onSlideChange(e.realIndex)}
+        slidesPerView={1}
+      >
+        {images.map((item, index) => (
+          <SwiperSlide style={{ height: "100%" }} key={index}>
+            <Box
+              h="full"
+              w="full"
+              bgSize="cover"
+              rounded="2xl"
+              bgPos="center"
+              bgRepeat="no-repeat"
+              bgImage={`url(${item.imgSrc})`}
+              display="flex"
+              flexDir="column"
+              alignContent="flex-end"
+              justifyContent="flex-end"
+            >
+              {/* <Image
+                width="100%"
+                height="100%"
+                alt="course-image"
+                src={item.imgSrc}
+                rounded="2xl"
+              /> */}
+              <Box
+                bg="linear-gradient(to top, #9e9b9bff, transparent 70%)" // semi-transparent white
+                backdropFilter="blur(1px)"
+                w="full"
+                h="fit"
+                roundedBottom="2xl"
+                display="flex"
+                flexDir="column"
+                alignItems="flex-start"
+                justifyContent="flex-start"
+                p={1}
+              >
+                <CourseTitle />
+                <CourseDescription mt={2} description={description} />
+                <Box
+                  w="full"
+                  h="full"
+                  mt={2}
+                  display="flex"
+                  justifyContent="flex-end"
+                  p={2}
+                  mr={2}
+                  alignItems="center"
+                >
+                  <Link href="/contacts">
+                    <Button
+                      w="full"
+                      colorPalette="gray"
+                      variant="subtle"
+                      rounded="3xl"
+                      position="relative"
+                      overflow="hidden"
+                      color="white"
+                      bgColor="black"
+                    >
+                      Записаться на бесплатный урок
+                    </Button>
+                  </Link>
+                </Box>
+              </Box>
+            </Box>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </Box>
   );
 };
