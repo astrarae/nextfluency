@@ -83,14 +83,17 @@ const InteractiveSection = ({
           height: "550px",
         }}
         loop={true}
-        pagination={{
-          dynamicBullets: true,
-          clickable: true,
-        }}
+        // pagination={{
+        //   dynamicBullets: true,
+        //   clickable: true,
+        // }}
         navigation={true}
         spaceBetween={30}
         centeredSlides={true}
         modules={[Navigation]}
+        allowTouchMove={true}
+        threshold={0}
+        touchRatio={2}
         className="mySwiper"
         onRealIndexChange={(e) => onSlideChange(e.realIndex)}
         slidesPerView={1}
