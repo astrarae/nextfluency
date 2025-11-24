@@ -31,7 +31,7 @@ const navDrawer = ({ children }) => {
               h="fit"
             >
               <Box display="flex" alignItems="center" gap={2} ml={4.5} mt={2}>
-                <Image alt="infinite-logo" src="infinite-logo.svg" width={30} height={30} />
+                <Image alt="infinite-logo" src="https://pub-b7bd7ae481894357bd45ecf311ea108b.r2.dev/infinite-logo.svg" width={30} height={30} />
                 <Text fontSize="16px" color={theme.textColor} fontWeight={700}>
                   One Fluency
                 </Text>
