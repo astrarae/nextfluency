@@ -113,7 +113,7 @@ const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
               Номер телефона
             </Text>
             <Text color={theme.textColor} fontSize="17px">
-              +998 50 2222 875
+              {"+998 (50) 222-28-75"}
             </Text>
           </Box>
         </Box>
