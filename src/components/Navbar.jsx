@@ -53,6 +53,16 @@ const Navbar = ({
           />
           }
         </NavDrawer> */}
+        {/* <Text
+          mb={1}
+          color={theme.textColor}
+          fontWeight={700}
+          fontSize="17px"
+          display={{ base: "none", lg: "flex" }}
+        >
+          OneFluency
+        </Text> */}
+
         <AnimatePresence>
           {showButton && (
             <motion.div
@@ -90,16 +100,6 @@ const Navbar = ({
             </motion.div>
           )}
         </AnimatePresence>
-
-        <Text
-          mb={1}
-          color={theme.textColor}
-          fontWeight={700}
-          fontSize="17px"
-          display={{ base: "none", lg: "flex" }}
-        >
-          OneFluency
-        </Text>
       </Box>
 
       <Box display="flex" flexDir="row" alignItems="center" gap={2}>
