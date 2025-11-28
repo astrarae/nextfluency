@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Text, Button } from "@chakra-ui/react";
 import CountryChoice from "./CountryChoice";
-import { Menu } from "lucide-react";
+import { House } from "lucide-react";
 import NavDrawer from "./Drawer";
 import { useCountryStore, useTheme } from "@/store";
 import { useEffect } from "react";
@@ -63,12 +63,15 @@ const Navbar = ({
             >
               <Link href="/">
                 <Button
-                  rounded="3xl"
                   color="white"
                   bgColor={theme.priceBoxAccent}
                   // backdropFilter="blur(2px)"
+                  boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
+                  // bgColor={theme == dark_theme ? "#212121ff" : "white"}
+                  variant="plain"
+                  rounded="lg"
                 >
-                  Меню
+                  <House />
                 </Button>
               </Link>
             </motion.div>
@@ -83,7 +86,7 @@ const Navbar = ({
               exit={{ transform: "scale(0.1)" }}
               transition={0.8}
             >
-              <ThemeSwitcher mt={0}/>
+              <ThemeSwitcher mt={0} />
             </motion.div>
           )}
         </AnimatePresence>
