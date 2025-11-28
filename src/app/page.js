@@ -7,12 +7,12 @@ import { Box } from "@chakra-ui/react";
 import ChangeReminder from "@/components/ChangeReminder";
 import { AnimatePresence } from "framer-motion";
 import { light_theme, dark_theme } from "@/themes";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "./page.css";
 export default function Home() {
   const { theme, setTheme } = useTheme();
-
+  const [ showThemeSwitcher, setShowThemeSwitcher ] = useState(false);
   // === LOADING SAVED THEME ===
   useEffect(() => {
     const savedTheme = localStorage.getItem("userTheme");
@@ -23,6 +23,7 @@ export default function Home() {
     } else {
       setTheme(light_theme);
     }
+    setShowThemeSwitcher(true);
   }, []);
 
   // ==== ==== ====
@@ -38,7 +39,7 @@ export default function Home() {
       bgColor={theme.bgColor}
       
     >
-      <Navbar />
+      <Navbar showThemeSwitcher={showThemeSwitcher}/>
       <MainPageAnimationWrapper>
         <Box
           w={{ base: "100vw", md: "500px", lg: "600px" }}

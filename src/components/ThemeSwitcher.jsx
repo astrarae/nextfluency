@@ -21,13 +21,14 @@ export default function ThemeSwitcher({ ...otherProps }) {
     <Box {...otherProps} display="flex" alignItems="center" gap={2}>
       <Button
         boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
-        bgColor={theme == dark_theme ? "#212121ff" : "none"}
+        bgColor={theme == dark_theme ? "#212121ff" : "white"}
         variant="plain"
+        rounded="lg"
         onClick={handleSwitch}
       >
         {theme.themeIcon}
       </Button>
-      <Text color="gray">Сменить тему</Text>
+      {/* <Text color="gray">Сменить тему</Text> */}
     </Box>
   );
 }

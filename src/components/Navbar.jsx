@@ -1,14 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Box, Text, Image } from "@chakra-ui/react";
+import { Box, Text, Button } from "@chakra-ui/react";
 import CountryChoice from "./CountryChoice";
 import { Menu } from "lucide-react";
 import NavDrawer from "./Drawer";
 import { useCountryStore, useTheme } from "@/store";
 import { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import ThemeSwitcher from "./ThemeSwitcher";
 
-const Navbar = ({ ...otherProps }) => {
+const Navbar = ({
+  showThemeSwitcher = false,
+  showButton = false,
+  ...otherProps
+}) => {
   const { theme } = useTheme();
   const { currentCountry, setCurrentCountry } = useCountryStore();
+
   const onClickHandle = (value) => {
     setCurrentCountry(value);
     localStorage.setItem("selectedCountry", value);
@@ -37,12 +45,49 @@ const Navbar = ({ ...otherProps }) => {
       backdropFilter="blur(7px)"
     >
       <Box display="flex" flexDir="row" alignItems="center" p={1} gap={2}>
-        <NavDrawer>
-          <Menu
+        {/* <NavDrawer>
+          icon={
+            <Menu
             color={theme.textColor}
             style={{ position: "relative", top: 0, right: 12 }}
           />
-        </NavDrawer>
+          }
+        </NavDrawer> */}
+        <AnimatePresence>
+          {showButton && (
+            <motion.div
+              initial={{ transform: "scale(0.1)" }}
+              animate={{ transform: "scale(1)" }}
+              exit={{ transform: "scale(0.1)" }}
+              transition={0.8}
+            >
+              <Link href="/">
+                <Button
+                  rounded="3xl"
+                  color="white"
+                  bgColor={theme.priceBoxAccent}
+                  // backdropFilter="blur(2px)"
+                >
+                  Главное меню
+                </Button>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {showThemeSwitcher && (
+            <motion.div
+              initial={{ transform: "scale(0.1)" }}
+              animate={{ transform: "scale(1)" }}
+              exit={{ transform: "scale(0.1)" }}
+              transition={0.8}
+            >
+              <ThemeSwitcher mt={0}/>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <Text
           mb={1}
           color={theme.textColor}

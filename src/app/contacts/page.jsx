@@ -6,7 +6,7 @@ import ContactCard from "../../components/ContactCard";
 import BankCard from "../../components/BankCard";
 import AnimatedWrapper from "./AnimatedWrapper";
 import Navbar from "@/components/Navbar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCurrentPage, useTheme } from "@/store";
 import { light_theme, dark_theme } from "@/themes";
 // export const metadata = {
@@ -17,10 +17,15 @@ import { light_theme, dark_theme } from "@/themes";
 const ContactsScreen = ({ params }) => {
   const { currentPage, setCurrentPage } = useCurrentPage();
   const { theme, setTheme } = useTheme();
+  const [ showButton, setShowButton ] = useState(false);
 
   useEffect(() => {
     setCurrentPage("contacts");
   }, [currentPage]);
+
+  useEffect(() => {
+    setShowButton(prev => true);
+  }, [])
 
   // === LOADING SAVED THEME ===
   useEffect(() => {
@@ -32,6 +37,7 @@ const ContactsScreen = ({ params }) => {
     } else {
       setTheme(light_theme);
     }
+    
   }, []);
 
   // ==== ==== ====
@@ -46,7 +52,7 @@ const ContactsScreen = ({ params }) => {
       flexDirection="column"
       bgColor={theme.bgColor}
     >
-      <Navbar />
+      <Navbar showButton={showButton}/>
       <AnimatedWrapper>
         <Box
           display="flex"

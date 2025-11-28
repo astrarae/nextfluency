@@ -8,14 +8,14 @@ import ProfileButton from "./ProfileButton";
 import Link from "next/link";
 import { useCurrentPage, useTheme } from "@/store";
 import ThemeSwitcher from "./ThemeSwitcher";
-const navDrawer = ({ children }) => {
+const navDrawer = ({ icon }) => {
   const { theme } = useTheme();
   const { currentPage } = useCurrentPage();
   return (
     <Drawer.Root preventScroll trapFocus placement="start" >
       <Drawer.Trigger asChild>
         <Button variant="plain" p={0} size="md">
-          {children}
+          {icon}
         </Button>
       </Drawer.Trigger>
       <Portal>
