@@ -68,7 +68,7 @@ const Navbar = ({
                   bgColor={theme.priceBoxAccent}
                   // backdropFilter="blur(2px)"
                 >
-                  Главное меню
+                  Меню
                 </Button>
               </Link>
             </motion.div>
