@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./InteractiveSection.css";
 import { useActiveImageIndex, useTheme } from "@/store";
+import { light_theme } from "@/themes";
 
 const InteractiveSection = ({
   theme,
@@ -30,7 +31,7 @@ const InteractiveSection = ({
           exit={{ opacity: 0 }}
           transition={{ duration: "0.4" }}
         >
-          <Text mt={3} ml={0.5} color="white" fontSize="2rem" fontWeight={700}>
+          <Text mt={1} ml={0.5} color="white" fontSize="2rem" fontWeight={700}>
             {title}
           </Text>
         </motion.div>
@@ -121,43 +122,57 @@ const InteractiveSection = ({
                 rounded="2xl"
               /> */}
               <Box
-                bg="linear-gradient(to top, #9e9b9bff, transparent 70%)" // semi-transparent white
+                bg="#00000078"// semi-transparent white
                 backdropFilter="blur(1px)"
                 w="full"
-                h="fit"
+                h="auto"
                 roundedBottom="2xl"
                 display="flex"
                 flexDir="column"
                 alignItems="flex-start"
-                justifyContent="flex-start"
-                p={1}
+                justifyContent="flex-end"
+                roundedTop="2xl"
+                pl={2}
+                pr={2}
+                pb={2}
+                pt={3}
               >
-                <CourseTitle />
-                <CourseDescription mt={2} description={description} />
                 <Box
-                  w="full"
-                  h="full"
-                  mt={2}
-                  display="flex"
-                  justifyContent="flex-end"
-                  p={2}
-                  mr={2}
-                  alignItems="center"
-                >
-                  <Link href="/contacts">
-                    <Button
-                      w="full"
-                      colorPalette="gray"
-                      variant="subtle"
-                      rounded="3xl"
-                      position="relative"
-                      overflow="hidden"
-                      color="white"
-                      bgColor="black"
-                    >
-                      Записаться на бесплатный урок
-                    </Button>
-                  </Link>
+                h="auto"
+                w="full"
+                display="flex"
+                flexDir="column"
+                alignItems="flex-start"
+                justifyContent="flex-start">
+                  <CourseTitle />
+                  <CourseDescription mt={2} description={description} />
+                  <Box
+                    w="full"
+                    h="full"
+                    mt={2}
+                    display="flex"
+                    justifyContent="flex-end"
+                    p={2}
+                    mr={2}
+                    alignItems="center"
+                  >
+                    <Link href="/contacts">
+                      <Button
+                        w="full"
+                        colorPalette="gray"
+                        variant="subtle"
+                        rounded="3xl"
+                        position="relative"
+                        overflow="hidden"
+                        color={theme.textColor}
+                        border={`1px solid ${theme == light_theme ? "none" : "white"}`}
+                        bgColor={theme.bgColor}
+                        boxShadow="1px 1px 7px rgba(0, 0, 0, 0.2)"
+                      >
+                        Записаться на бесплатный урок
+                      </Button>
+                    </Link>
+                  </Box>
                 </Box>
               </Box>
             </Box>

@@ -1,11 +1,6 @@
-html {
-    
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
+html, body, #root {
+    background-color: white;
+    height: 100%;
+    overscroll-behavior: none;
+    overflow-y: hidden;
 }
