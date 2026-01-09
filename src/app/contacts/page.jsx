@@ -66,7 +66,7 @@ const ContactsScreen = ({ params }) => {
         >
           <ProfileCard
             theme={theme}
-            avatarImage="avatarr.jpg"
+            avatarImage="avatar.jpg"
             backgroundImage="https://images.pexels.com/photos/1824273/pexels-photo-1824273.jpeg"
           >
             <CertificateCard

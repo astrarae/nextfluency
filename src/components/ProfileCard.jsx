@@ -32,7 +32,7 @@ const ProfileCard = ({ theme, avatarImage, backgroundImage, children }) => {
             w="3.5rem"
             h="3.5rem"
             rounded="50%"
-            border="3px solid #0064e0"
+            // border="3px solid #0064e0"
           />
 
           <Box
