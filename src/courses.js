@@ -32,7 +32,7 @@ const cards = [
     KorMonthSalePrice: "300 000",
     KorMonthlyEconomy: "23",
     KorDailyPayment: "25 000",
-    KorEconomyTotalSum: "70 000",
+    KorEconomyTotalSum: "50 000",
 
     KorGroupPrice: "300 000",
     KorGroupSalePrice: "230 000",
@@ -73,7 +73,7 @@ const cards = [
     KorMonthSalePrice: "300 000",
     KorMonthlyEconomy: "23",
     KorDailyPayment: "25 000",
-    KorEconomyTotalSum: "70 000",
+    KorEconomyTotalSum: "50 000",
 
     KorGroupPrice: "300 000",
     KorGroupSalePrice: "230 000",
@@ -134,17 +134,17 @@ const cards = [
     uzGroupEconomy: "25",
     uzEconomyGroupTotalSum: "400 000",
 
-    KorMonthPrice: "420 000",
-    KorMonthSalePrice: "350 000",
-    KorDailyPayment: "35 000",
-    KorEconomyTotalSum: "70 000",
+    KorMonthPrice: "550 000",
+    KorMonthSalePrice: "400 000",
+    KorDailyPayment: "45 000",
+    KorEconomyTotalSum: "150 000",
     KorMonthlyEconomy: "23",
 
-    KorGroupPrice: "350 000",
+    KorGroupPrice: "450 000",
     KorGroupSalePrice: "300 000",
-    KorGroupDailyPayment: "30 000",
-    KorGroupEconomy: "15",
-    KorEconomyGroupTotalSum: "50 000",
+    KorGroupDailyPayment: "40 000",
+    KorGroupEconomy: "23",
+    KorEconomyGroupTotalSum: "150 000",
   },
 
   {
@@ -177,17 +177,17 @@ const cards = [
     uzGroupEconomy: "25",
     uzEconomyGroupTotalSum: "400 000",
 
-    KorMonthPrice: "420 000",
-    KorMonthSalePrice: "350 000",
-    KorDailyPayment: "35 000",
-    KorEconomyTotalSum: "70 000",
+    KorMonthPrice: "550 000",
+    KorMonthSalePrice: "400 000",
+    KorDailyPayment: "45 000",
+    KorEconomyTotalSum: "150 000",
     KorMonthlyEconomy: "23",
 
-    KorGroupPrice: "350 000",
+    KorGroupPrice: "450 000",
     KorGroupSalePrice: "300 000",
-    KorGroupDailyPayment: "30 000",
-    KorGroupEconomy: "15",
-    KorEconomyGroupTotalSum: "50 000",
+    KorGroupDailyPayment: "40 000",
+    KorGroupEconomy: "23",
+    KorEconomyGroupTotalSum: "150 000",
   },
 ];
 
