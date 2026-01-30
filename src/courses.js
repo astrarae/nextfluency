@@ -17,7 +17,7 @@ const cards = [
     name: "Корейский язык 🇰🇷",
     descr: "Корейский, который наконец-то становится понятным.",
     uzMonthPrice: "1 560 000",
-    uzMonthSalePrice: "1 200 000",
+    uzMonthSalePrice: "1 440 000",
     uzMonthlyEconomy: "23",
     uzDailyPayment: "130 000",
     uzEconomyTotalSum: "360 000",
@@ -58,7 +58,7 @@ const cards = [
     descr: "Английский, который реально работает для вас.",
 
     uzMonthPrice: "1 560 000",
-    uzMonthSalePrice: "1 200 000",
+    uzMonthSalePrice: "1 440 000",
     uzMonthlyEconomy: "23",
     uzDailyPayment: "130 000",
     uzEconomyTotalSum: "360 000",
